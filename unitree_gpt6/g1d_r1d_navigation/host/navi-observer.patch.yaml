@@ -1,0 +1,24 @@
+# host/navi-observer.patch.yaml -- mounts the observation-push plugin (web and headless).
+#
+# While the model is thinking, the host plugin polls navi_mcp_server's read-only status endpoint
+# (127.0.0.1:3082) once per second. When the robot has come to rest or is blocked by the radar reflex layer,
+# it pushes a "[观测]" line into the running turn's inbox (visible to the model at the next step boundary);
+# if the same obstacle keeps blocking for over 8s it escalates to interrupting inference.
+# See the header comment of host/navi-observer/index.ts.
+#
+# A name starting with ./ is resolved by DSH relative to this patch file's directory, so the repo can move freely.
+# "type": "module" in the plugin's package.json is required: the plugin lives outside the DSH repo, and without
+# it tsx treats .ts as CJS and loading fails with ERR_REQUIRE_CYCLE_MODULE.
+#
+# Read-only boundary: the plugin calls no robot tools and issues no motion commands; its only side effects are
+# session messages and interrupts.
+# Switches (env vars):
+#   NAVI_OBSERVER_PORT=0       Disable (also set navi.observer.port: 0 in config.yaml)
+#   NAVI_OBSERVER_IMAGES=0     Push text lines only, no images
+#   NAVI_OBSERVER_INTERVAL_MS  Poll interval (default 1000)
+#
+# Scope: pushes only to Navi sessions (preset=navi or a system prompt containing "Unitree Navi Agent"); other
+# sessions in the same process receive nothing -- see host/navi-observer/scope.ts.
+- insert:
+    - id: navi-observer
+      name: './navi-observer/index.ts'

@@ -1,0 +1,33 @@
+{
+  "status": "environment_inventory_template_not_install_lock",
+  "python": null,
+  "versions": {
+    "numpy": null,
+    "scipy": null,
+    "opencv-python": null,
+    "PyYAML": null,
+    "pyzmq": null,
+    "pin": null,
+    "cyclonedds": null,
+    "pyffish": null,
+    "unitree_sdk2py": null
+  },
+  "note": "在目标环境核验后记录版本；null表示尚未读取，不代表缺包。版本记录不是安装锁文件。",
+  "_field_help": {
+    "python": {
+      "description": "目标解释器的Python版本及平台；从实际环境读取。",
+      "example": "<python --version；平台/架构>"
+    },
+    "versions": {
+      "description": "目标解释器的distribution版本；cv2对应opencv-python或opencv-python-headless，pinocchio导入对应pin发行包，按实际安装名称记录。",
+      "example": {
+        "numpy": "<实际版本>",
+        "pin": "<实际版本>"
+      }
+    },
+    "compatibility": {
+      "description": "Python依赖按pyproject.toml 的 chess 组安装；Linux x86_64与Python 3.10为基线，其他平台须核验wheel及原生库。",
+      "example": "运行 scripts/check_environment.py 验证导入、模型和引擎"
+    }
+  }
+}

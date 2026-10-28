@@ -1,0 +1,118 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unitree-robotskills"
+version = "0.1.0"
+description = "General skills for the physical world on Unitree robots, driven by a host AI agent"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["PyYAML>=6.0,<7"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.11,<1", "setuptools>=68", "wheel"]
+
+draw = [
+    "numpy==2.2.6",
+    "scipy==1.15.2",
+    "PyYAML==6.0.3",
+    "pin==4.1.0",
+    "libpinocchio==4.1.0",
+    "coal==3.0.3",
+    "libcoal==3.0.3",
+    "eigenpy==3.13.0",
+    "cmeel==0.61.0",
+    "cmeel-boost==1.90.0",
+    "cmeel-urdfdom==6.0.0",
+    "cmeel-tinyxml2==11.0.0",
+    "cmeel-console-bridge==1.0.2.3",
+    "cmeel-assimp==6.0.5",
+    "cmeel-octomap==1.10.0",
+    "cmeel-qhull==8.0.2.1",
+    "cmeel-zlib==1.3.2",
+    "tomli==2.5.0; python_version < \"3.11\"",
+    "opencv-python==4.12.0.88",
+    "pyzmq==27.2.0",
+    "cyclonedds==0.10.2",
+    "unitree_sdk2py @ git+https://github.com/unitreerobotics/unitree_sdk2_python.git@65691c8a8bc53b98d3976dba4dbf9d5d20b2e7f5",
+    "rich-click==1.9.9",
+    "click==8.5.0",
+    "rich==15.0.0",
+    "typing-extensions==4.16.0",
+    "markdown-it-py==4.2.0",
+    "mdurl==0.1.2",
+    "Pygments==2.21.0",
+]
+
+chess = [
+    "numpy==1.26.4",
+    "scipy==1.15.2",
+    "opencv-python==4.10.0.84",
+    "PyYAML==6.0.3",
+    "pyzmq==27.2.0",
+    "pin==2.7.0",
+    "cyclonedds==0.10.2",
+    "pyffish==0.0.90",
+    "unitree_sdk2py @ git+https://github.com/unitreerobotics/unitree_sdk2_python.git@65691c8a8bc53b98d3976dba4dbf9d5d20b2e7f5",
+]
+
+navigation = [
+    "mcp>=1.2,<2",
+    "numpy>=1.21",
+    "opencv-python>=4.5",
+    "pyzmq>=22.0",
+    "pyyaml>=5.4",
+    "psutil>=5.8",
+]
+
+gomoku-hardware = [
+    "numpy>=1.26,<3", "scipy>=1.13,<2", "opencv-python>=4.8,<6", "pyzmq>=25,<28",
+    "pin>=3,<5", "casadi>=3.6,<4", "cyclonedds==0.10.2",
+]
+
+[project.scripts]
+robot-paint-execute = "unitree_gpt6.g1d_draw.src.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["unitree_gpt6*"]
+exclude = ["*.tests", "*.tests.*", "*.test", "*.test.*"]
+
+[tool.setuptools.package-data]
+"unitree_gpt6" = ["*/config/*.yaml"]
+"unitree_gpt6.g1d_draw" = [
+    "README*.md", "SKILL*.md", "config/*.json", "examples/*.md",
+    "assets/golden_gate_bridge/*", "scripts/*.sh",
+]
+
+"unitree_gpt6.g1d_gomoku.src.unitree_sdk2py" = ["LICENSE", "VENDORED.md", "manifest.json", "utils/lib/*.so"]
+"unitree_gpt6.g1d_chess" = ["SKILL*.md"]
+"unitree_gpt6.g1d_gomoku" = [
+    "README*.md", "ARCHITECTURE*.md", "SKILL*.md", "docs/*.md", "assets/*.json", "assets/*.md",
+    "config/*.json", "config/*.md", "experience/*.json",
+]
+"unitree_gpt6.g1d_gomoku.models.g1" = [
+    "README*.md", "manifest.json", "licenses/*", "assets/*.urdf", "assets/meshes/*.STL",
+]
+
+[tool.ruff]
+# g1d_chess keeps its original source layout and is checked by its own tooling.
+extend-exclude = ["unitree_gpt6/g1d_gomoku/src/unitree_sdk2py", "unitree_gpt6/g1d_chess"]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

@@ -1,0 +1,20 @@
+# Site config (may contain internal addresses / map IDs) and local environment
+src/navi_agent/config.yaml
+.env
+navi.env
+
+# Runtime data: maps, waypoints, topology memory, camera frames, run logs
+src/navi_agent/data/
+data/
+logs/
+.dsh-home/
+host/generated/
+
+# DeepSeek-Harness, if cloned inside the skill directory
+deepseek-harness/
+
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

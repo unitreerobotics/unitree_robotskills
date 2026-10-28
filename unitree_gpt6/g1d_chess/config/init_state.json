@@ -1,0 +1,43 @@
+{
+  "status": "requires_site_measurement",
+  "coordinate_frame": "arm model with locked zero waist; x forward, y left, z up",
+  "units": {
+    "q": "rad",
+    "xyz": "m",
+    "rpy": "rad (fixed-axis xyz euler)"
+  },
+  "left_arm": {
+    "q": null,
+    "xyz_rpy": null
+  },
+  "right_arm": {
+    "q": null,
+    "xyz_rpy": null
+  },
+  "grippers": {
+    "left_q": null,
+    "right_q": null
+  },
+  "recorded_at": null,
+  "source_state": null,
+  "_field_help": {
+    "left_arm": {
+      "description": "物理左手同帧7关节实测q与6项模型FK XYZ/RPY；不能镜像右手或使用示例测量。",
+      "example": {
+        "q": "<7项实测弧度>",
+        "xyz_rpy": "<x,y,z,roll,pitch,yaw>"
+      }
+    },
+    "right_arm": {
+      "description": "物理右手同帧7关节实测q与6项模型FK XYZ/RPY。",
+      "example": {
+        "q": "<7项实测弧度>",
+        "xyz_rpy": "<x,y,z,roll,pitch,yaw>"
+      }
+    },
+    "source_state": {
+      "description": "本次新环境采集的状态文件，在runs内留存；本字段只记录来源。",
+      "example": "runs/site_setup/tmp/initial_state.json"
+    }
+  }
+}

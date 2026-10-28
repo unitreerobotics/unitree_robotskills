@@ -1,0 +1,61 @@
+# Copy outside the installed package, configure your own setup, then use
+# --config /path/to/hardware.local.yaml or GOMOKU_HARDWARE_CONFIG.
+# Relative paths resolve from the local YAML file. Loading it connects no device.
+# G1-D configuration template. Capture reset state from the current robot;
+# no scene-specific reset or motion experience is shipped.
+robot_model: G1-D
+mode: hardware
+model_provider: none
+camera:
+  host: ""  # Required: camera publisher on the robot LAN.
+  enabled: [cam_left_high, cam_right_high, cam_left_wrist, cam_right_wrist]
+  ports:
+    head: 55555
+    left_wrist: 55556
+    right_wrist: 55557
+  stale_after: 2.0
+  jpeg_quality: 90
+  web_host: 127.0.0.1
+  web_port: 8080
+  web_fps: 15
+robot:
+  backend: dds
+  network_interface: ""  # Required: host NIC connected to the G1.
+  domain_id: 0
+  # DDS SDK is bundled under this skill's src/unitree_sdk2py; G1 model and gains,
+  # URDF and meshes are bundled in unitree_gpt6.g1d_gomoku.models.g1.
+  topic_low_command: rt/lowcmd
+  topic_low_state: rt/lowstate
+  state_timeout: 0.5
+  connect_timeout: 5.0
+  rate_hz: 100
+  max_joint_speed: 0.4
+  joint_tolerance: 0.1
+  settle_timeout: 8.0
+  gripper_speed: 0.15
+  gripper_tolerance: 0.15
+  ik_position_tolerance: 0.005
+  ik_rotation_tolerance: 0.03
+  arrival_position_tolerance: 0.02
+  arrival_rotation_tolerance: 0.03
+  grippers:
+    left:
+      state_topic: rt/dex1/left/state
+      command_topic: rt/dex1/left/cmd
+      open: 5.45
+      close: 0.0
+      min: 0.0
+      max: 5.45
+    right:
+      state_topic: rt/dex1/right/state
+      command_topic: rt/dex1/right/cmd
+      open: 5.45
+      close: 0.0
+      min: 0.0
+      max: 5.45
+runtime:
+  directory: ../runtime
+  # Captured read-only from the current robot at a reviewed rest pose.
+  # Paths resolve from workspace/config/hardware.local.yaml.
+  reset_state: ../calibration/reset_right_state.json
+  scene_calibration: ../calibration/scene.json

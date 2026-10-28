@@ -1,0 +1,10 @@
+{
+  "context_id": null,
+  "description": "仅复用兼容的棋盘/机身/腰姿/工具/模型及source-target姿态组；条件改变时更新context_id，旧JSONL保留。",
+  "_field_help": {
+    "context_id": {
+      "description": "本次已确认兼容环境的非空唯一标识；也可通过spec.xy_error_context或CLI --context-id显式提供，不自动沿用历史组。",
+      "example": "g1d_site_A_board_A_tool_A_pose_v1"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "validated_at": "2026-10-20T15:35:48.316866+08:00",
+  "validation_root": ".",
+  "scope": "Direct invocation with the user Python environment; wrapper removed. Offline tests, dependency/model/engine checks and CLI help from another working directory. No robot or camera connections.",
+  "offline_tests": {
+    "run": 69,
+    "failures": 0,
+    "errors": 0
+  },
+  "pip_check": "passed",
+  "cli_help_checks": 13,
+  "environment": {
+    "status": "passed",
+    "python_baseline": "3.10 / Linux x86_64",
+    "dependency_versions": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "opencv-python": "4.10.0.84",
+      "PyYAML": "6.0.3",
+      "pyzmq": "27.2.0",
+      "pin": "2.7.0",
+      "cyclonedds": "0.10.2",
+      "pyffish": "0.0.90",
+      "unitree_sdk2py": "1.0.1"
+    },
+    "imports_from_installed_environment": true,
+    "unitree_deploy_imported": false,
+    "urdf_mesh_references": 87,
+    "model_fk_dynamics": "passed; 3 deterministic synthetic states match previous model at 1e-10 tolerance",
+    "synthetic_ik": "passed",
+    "synthetic_full_path_preflight": {
+      "status": "passed",
+      "waypoints": 5,
+      "collision_and_joint_interpolation_checks_enabled": true,
+      "maximum_joint_difference_rad": 2.63075422557435e-10,
+      "maximum_duration_difference_s": 4.0351677554895105e-10,
+      "source": "synthetic bilateral motion/open/close/return path, not a real chess round",
+      "robot_calls": false
+    },
+    "arm_joint_order": "physical left 7 then physical right 7",
+    "engine_uci": "passed",
+    "engine_release": "fairy_sf_14 largeboard Linux x86_64",
+    "engine_sha256": "41b8b4d539adfd9924929ee4a948d1a37dd1e9beaa535a811cb5e7fee9e4cb99",
+    "xiangqi_initial_legal_moves": 44,
+    "engine_path_fallback_empty_variable": "passed"
+  },
+  "controller_change_scope": "Removed interpreter wrapper and configuration references; CLI adapters and motion/control implementation unchanged. Environment checker falls back to fairy-stockfish on PATH for unset or empty CHESS_ENGINE.",
+  "hardware_verified": false,
+  "robot_calls": false,
+  "cli_help_working_directory": "outside repository",
+  "skill_validation": "passed; root SKILL.md frontmatter and linked resources validated",
+  "package_validation": "passed; SHA256, JSON/Python/shell syntax, Markdown links, retired directories and script inventory",
+  "limitations": [
+    "No real robot, DDS, camera or full chess round executed during repository reorganization.",
+    "XY correction implementation still has local motion checks; operational-rule mismatch is documented in docs/runtime.md."
+  ],
+  "python_entry": "python scripts/<entry>.py in the activated user environment, or explicit interpreter path; service launcher uses G1_PYTHON or python on PATH, with CLI --python override."
+}

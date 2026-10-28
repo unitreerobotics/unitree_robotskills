@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m ruff check .
+      - run: python -m ruff format --check .
+      - name: Check shell syntax
+        run: |
+          for script in unitree_gpt6/*/scripts/*.sh; do
+            bash -n "$script"
+          done
+      - name: Offline unit tests without importing the vendored SDK
+        run: |
+          for skill in g1d_r1d_navigation/common g1d_gomoku g1d_r1d_navigation; do
+            python -m unittest discover -s "unitree_gpt6/$skill/tests" -p 'test_*.py'
+          done
+      - name: Preview smoke tests
+        run: |
+          python -m unitree_gpt6.g1d_gomoku.src.main --help
+          python -m unitree_gpt6.g1d_r1d_navigation.src.main --instruction home

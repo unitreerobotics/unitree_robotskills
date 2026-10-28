@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "status": "site_parameter_template_not_a_prepared_transaction",
+  "candidate_only": true,
+  "scope": "通用单轮流程；设备/现场参数为空，须按当前模型、工具和棋盘填写并同步到实际spec。",
+  "policy": {
+    "single_transaction": true,
+    "source_high_gate_cameras": [
+      "cam_left_high",
+      "physical_actor_wrist"
+    ],
+    "confirm_after_descent": true,
+    "post_grasp_visual_gates": 1,
+    "post_grasp_added_operator_waits": 0,
+    "success_tail": [
+      "lift_at_source",
+      "direct_target_high",
+      "descend",
+      "pre_release_head_actor_wrist_gate",
+      "open_at_actual_pose",
+      "open_vertical_retract_to_clearance",
+      "open_to_staging",
+      "close_empty",
+      "return_init"
+    ],
+    "source_correction_moves_target": false,
+    "source_correction_can_change_grasp_offset": true,
+    "gripper_open_q_scope": "one_absolute_q_for_all_open_actions_in_one_transaction",
+    "command_waist_motion": "explicit_lock_zero_before_planning; keep_hold_after_round",
+    "final_observation_after_init": true,
+    "second_low_adjust_z_then_close_without_third_gate": true,
+    "tip_contact_policy": "docs/neighbor_clearance_and_landing.md",
+    "planning_cameras": [
+      "cam_left_high"
+    ],
+    "source_third_xy_action": "descend_without_another_high_photo",
+    "target_third_xy_action": "open_without_another_photo",
+    "correction_motion_checks": false,
+    "xy_correction_distance_limit_m": null
+  },
+  "candidate_parameters": {
+    "grasp_pitch_deg": null,
+    "release_pitch_deg": null,
+    "roll_rad": null,
+    "yaw_rad": null,
+    "gripper_open_q": null,
+    "gripper_close_q": null,
+    "grasp_start_ee_z_m": null,
+    "grasp_ee_z_sequence_m": null,
+    "low_z_step_m": 0.005,
+    "max_low_z_adjustments_per_actual_grasp": 2,
+    "source_gate_ee_z_m": null,
+    "travel_ee_z_m": null,
+    "release_ee_z_m": null,
+    "staging_ee_xy_m": null,
+    "max_high_xy_corrections_total": 3,
+    "max_actual_grasp_attempts": 3,
+    "max_high_offset_m": null,
+    "stationary_grasp_contact": {
+      "empty_below_q": null,
+      "max_abs_dq": null,
+      "success_hold_s": null,
+      "contact_timeout_s": null,
+      "scope": "stationary_after_close_only"
+    },
+    "decision_target_s": 5.0,
+    "tray_release_ee_z_m": null,
+    "max_target_offset_m": null
+  },
+  "frames": {
+    "ee": "模型EE，x向前/y向左/z向上；执行前核验实际腰锁为零。",
+    "actual_relative_offset_xy_m": "本检查点实际FK基础上的期望XY增量，由提交工具换算到adjustment_reference_right_arm；不得重复累加。",
+    "z_values": "全部为EE请求Z，不是指尖净空、棋面高度或实测释放高度。",
+    "grasp_offset": "棋子中心相对工具的夹持偏置；source修正和接触方式可能改变它，target固定并不能消除该偏置。"
+  },
+  "must_come_from_current_round": [
+    "source identity and board square",
+    "target identity, emptiness and board reference",
+    "source/target EE XY and their geometry provenance",
+    "actual waist_q and robot/camera state",
+    "current init pose and model/tool envelope",
+    "neighbor and open-finger clearance",
+    "current runtime capabilities and preflight result"
+  ],
+  "boundaries": [
+    "本JSON只说明流程与待填参数，不是服务request；编辑不会自动改变规划器或服务默认值。",
+    "null在位姿/工具字段表示待填；距离上限字段的null表示当前策略不设上限，二者语义见字段说明。",
+    "开爪q是同一事务内所有open动作共用的绝对目标值，不是比例；内置Dex1左右爪gripper_open_sign默认+1，正角度张开、0闭合；实际电机目标为幅值乘方向符号，特殊关节约定可显式覆盖。",
+    "Z序列按现场起始EE高度和既有5mm下调策略生成；低位操作按当前round_plan执行，不用下降弥补XY问题。",
+    "接触阈值和时间必须核对实际夹爪量纲、反馈与运行时实现，不能从历史案例推断。",
+    "稳定非空夹持及placed不证明抓对棋子或准确落格；最后仍需新图验收。",
+    "decision_target_s仅为响应目标，不是自动超时、保证或回退规则。",
+    "腰锁与实际腰姿以本次状态为准；历史nominal零腰不构成几何标定。"
+  ],
+  "evidence_cases": [],
+  "_field_help": {
+    "candidate_parameters.grasp_pitch_deg": {
+      "description": "source抓取pitch候选，单位deg；按物理手/邻子/可达性选择。",
+      "example": "<本次source pitch，deg>"
+    },
+    "candidate_parameters.release_pitch_deg": {
+      "description": "target释放pitch候选，单位deg；与source独立估计。",
+      "example": "<本次target pitch，deg>"
+    },
+    "candidate_parameters.roll_rad": {
+      "description": "工具roll，单位rad。",
+      "example": "<当前阶段roll，rad>"
+    },
+    "candidate_parameters.yaw_rad": {
+      "description": "工具yaw，单位rad；不得套历史另一手或另一姿态。",
+      "example": "<当前阶段yaw，rad>"
+    },
+    "candidate_parameters.gripper_open_q": {
+      "description": "夹爪绝对开爪目标，按SDK量纲和有效夹持范围核对。",
+      "example": "<现场确认的绝对q>"
+    },
+    "candidate_parameters.gripper_close_q": {
+      "description": "夹爪闭合参考q；当前生成器close使用0，不能仅改此文档改变执行。",
+      "example": "<与当前运行时close实现一致的q>"
+    },
+    "candidate_parameters.grasp_start_ee_z_m": {
+      "description": "当前source初始闭爪EE高度，基座系m，不是板面/指尖高度。",
+      "example": "<本次source EE Z，m>"
+    },
+    "candidate_parameters.grasp_ee_z_sequence_m": {
+      "description": "由已确认起始Z及既有5mm规则计算的低位候选；初始、第一次、第二次。",
+      "example": "[Z0, Z0 - 0.005, Z0 - 0.010]（替换为数值）"
+    },
+    "candidate_parameters.source_gate_ee_z_m": {
+      "description": "source高位复拍EE Z，按现场净空与成像确定。",
+      "example": "<source高位Z，m>"
+    },
+    "candidate_parameters.travel_ee_z_m": {
+      "description": "高位搬运EE Z，需满足工具包络与邻子净空。",
+      "example": "<搬运Z，m>"
+    },
+    "candidate_parameters.release_ee_z_m": {
+      "description": "新设备棋盘释放EE Z；必须与新场景和工具核对，并同步round_spec及本轮说明。",
+      "example": "<本次棋盘释放EE Z，m>"
+    },
+    "candidate_parameters.staging_ee_xy_m": {
+      "description": "同侧撤离/衔接区域EE XY，按物理手独立填写。",
+      "example": "[本次X, 本次Y]（m）"
+    },
+    "candidate_parameters.tray_release_ee_z_m": {
+      "description": "同侧圆盘释放EE Z，按圆盘及工具实物确认，并同步capture_spec。",
+      "example": "<本次圆盘释放EE Z，m>"
+    },
+    "candidate_parameters.stationary_grasp_contact.empty_below_q": {
+      "description": "空抓阈值，当前SDK归一化q量纲。",
+      "example": "<实际夹爪空闭合反馈阈值>"
+    },
+    "candidate_parameters.stationary_grasp_contact.max_abs_dq": {
+      "description": "稳定接触最大|dq|，按SDK反馈单位。",
+      "example": "<稳定接触速度阈值>"
+    },
+    "candidate_parameters.stationary_grasp_contact.success_hold_s": {
+      "description": "连续满足接触条件的持续时间，s。",
+      "example": "<与运行时确认一致的持续秒数>"
+    },
+    "candidate_parameters.stationary_grasp_contact.contact_timeout_s": {
+      "description": "运行时接触检测超时，s，不是视觉门禁超时。",
+      "example": "<与运行时确认一致的超时秒数>"
+    },
+    "candidate_parameters.max_high_offset_m": {
+      "description": "当前高位XY修正不设距离上限，null不是缺少现场尺寸。",
+      "example": null
+    },
+    "candidate_parameters.max_target_offset_m": {
+      "description": "当前target XY修正不设距离上限，null不是缺少现场尺寸。",
+      "example": null
+    },
+    "policy.xy_correction_distance_limit_m": {
+      "description": "当前既有修正规则：不设单次或累计距离上限。",
+      "example": null
+    }
+  }
+}

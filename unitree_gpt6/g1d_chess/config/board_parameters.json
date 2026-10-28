@@ -1,0 +1,24 @@
+{
+  "board": {
+    "height": null,
+    "cellSize": null
+  },
+  "piece": {
+    "diameter": null,
+    "height": null
+  },
+  "status": "requires_site_measurement",
+  "_field_help": {
+    "description": "实际棋盘高度、格距及棋子尺寸，带明确单位；此文件是记录，脚本不自动使用它标定机器人。",
+    "example": {
+      "board": {
+        "height": "<实测厘米>",
+        "cellSize": "<实测厘米>"
+      },
+      "piece": {
+        "diameter": "<实测厘米>",
+        "height": "<实测厘米>"
+      }
+    }
+  }
+}

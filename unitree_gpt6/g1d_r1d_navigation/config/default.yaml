@@ -1,0 +1,14 @@
+robot_model: R1-D
+mode: preview
+model_provider: none
+limits:
+  max_actions: 10
+  task_timeout_s: 10
+navigation:
+  coordinate_frame: map_unregistered
+waypoints:
+  home:
+    x_m: 0.0
+    y_m: 0.0
+    yaw_rad: 0.0
+# Illustrative target only; no map, localization, obstacle handling or route planning.

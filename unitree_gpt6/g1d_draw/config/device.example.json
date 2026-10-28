@@ -1,0 +1,38 @@
+{
+  "device": {
+    "robot_id": "g1d",
+    "interface": "eth0",
+    "domain_id": 0,
+    "lowstate_topic": "rt/lowstate",
+    "lowcmd_topic": "rt/lowcmd",
+    "gripper_interface": "internal"
+  },
+  "gains": {
+    "arm_kp": [80, 80, 80, 80, 40, 40, 40, 80, 80, 80, 80, 40, 40, 40],
+    "arm_kd": [3, 3, 3, 3, 1.5, 1.5, 1.5, 3, 3, 3, 3, 1.5, 1.5, 1.5],
+    "waist_kp": [300, 300, 300],
+    "waist_kd": [3, 3, 3],
+    "gripper_kp": [5, 5],
+    "gripper_kd": [0.05, 0.05]
+  },
+  "motion": {
+    "publish_hz": 250,
+    "command_hz": 50,
+    "max_speed_rad_s": 0.5,
+    "max_step_rad": 0.02,
+    "contact_position_tolerance_m": 0.005,
+    "runtime_orientation_tolerance_rad": 0.08
+  },
+  "model": {
+    "urdf": "models/g1.urdf",
+    "left_frame": "left_wrist_yaw_joint",
+    "right_frame": "right_wrist_yaw_joint",
+    "left_tool_transform": [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]],
+    "right_tool_transform": [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]],
+    "reference_positions": {}
+  },
+  "storage": {
+    "directory": "../local",
+    "additional_lock_files": []
+  }
+}

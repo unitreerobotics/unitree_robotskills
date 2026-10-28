@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Measured Gomoku scene geometry",
+  "description": "No defaults: populate from current scene calibration and clearance review.",
+  "type": "object",
+  "required": [
+    "frame",
+    "tool_tip_offset_m",
+    "high_route_min_tcp_z_m",
+    "high_route_min_tip_z_m",
+    "rest_corridor"
+  ],
+  "properties": {
+    "frame": {
+      "const": "pelvis"
+    },
+    "tool_tip_offset_m": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      }
+    },
+    "high_route_min_tcp_z_m": {
+      "type": "number"
+    },
+    "high_route_min_tip_z_m": {
+      "type": "number"
+    },
+    "rest_corridor": {
+      "type": "object",
+      "required": [
+        "left",
+        "right"
+      ],
+      "properties": {
+        "left": {
+          "type": "object",
+          "required": [
+            "min_m",
+            "max_m"
+          ],
+          "properties": {
+            "min_m": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            },
+            "max_m": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "object",
+          "required": [
+            "min_m",
+            "max_m"
+          ],
+          "properties": {
+            "min_m": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            },
+            "max_m": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "measurements": {
+      "type": "object"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

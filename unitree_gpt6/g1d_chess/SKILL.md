@@ -1,0 +1,39 @@
+---
+name: g1d-chess
+description: Operate a Unitree G1 with internal Dex1 grippers to play Chinese chess, including environment and site setup, robot service and waist hold, board annotation, turn planning, left/right-hand pick-and-place, capture sequences, checkpoint decisions, and post-turn review. Use when the user requests these robot chess tasks with this repository.
+---
+
+# G1-D Chinese chess control
+
+English | [中文](SKILL.zh.md)
+
+Use this skill directory as the working root. Use the user's Python environment with the dependencies installed and run `python scripts/…` directly. For independent tool calls, confirm the current interpreter or use its absolute path. All scripts, configuration, references, and models are located relative to this directory. Set the working directory and actual absolute paths explicitly in terminal calls; do not reuse shell variables, tokens, or robot state from another session.
+
+Both internal Dex1 grippers default to opening direction `+1`: positive motor angles open the gripper, and `q=0` closes it. Keep this default for ordinary environment migrations; do not reverse it by hand side or make it a mandatory site measurement. Override it only when supported by a different hardware/firmware joint convention. Set the planned `gripper_open_q` to a positive magnitude; the service applies the direction sign before sending it. The client's `--q` takes the signed actual motor angle.
+
+## Choose the task and references
+
+- New device or unconfirmed environment: read the [README](README.md), [environment setup](docs/environment_setup.md), and [first-game setup](docs/first_game_setup.md). Prefer user-provided scene values compatible with the current coordinate frame, tools, and site. If the user provides no site data, estimate all scene fields using Section 5 of first-game setup; if only some values are supplied, fill the remaining fields. Combine available observations, robot/tool models, dimensional references, and reasonable assumptions. Record sources, estimation evidence, and uncertainty, then continue configuration and checks without making user-supplied values, field-by-field information requests, or additional confirmation prerequisites. Label estimates as estimates. Complete offline work first, then connect to hardware only within the current task's authorization.
+- Only establish/reuse the service, hold the waist, or check init: read Sections 0.1.2, 0.1.3, and 4 of the [operation manual](docs/operation_manual.md), and use `scripts/start_service.sh` and `scripts/robot_client.py`. Stop after the requested scope; do not automatically play a turn.
+- Annotate a new board: read [board_position](board_position/README.md) and its [annotation task](board_position/prompts/mark_board.md), and use `scripts/mark_board.py`. The output is pixel data for 90 intersections in the current image, not robot coordinates or hand-eye calibration.
+- Execute a turn: first read [round_plan](prompts/round_plan.md) and the [runtime interface and implementation limits](docs/runtime.md), then follow the workflow below. Obtain exact commands and fields from the [operation manual](docs/operation_manual.md) and [script inventory](docs/round_script_inventory.md) as needed, before starting motion.
+- Interruption, timeout, or user-requested retreat: first read Section 9 of the operation manual and the runtime guide, then inspect the actual session, transaction result, and state. Interrupting the execute client does not mean the robot action has been cancelled. Do not blindly resend execute, restart the service, or reuse an old token.
+
+The current user instruction defines the task scope; retain existing execution authorization for this turn. Reading documentation, organizing the repository, or performing offline checks does not authorize starting the service or moving the robot.
+
+## Single-turn workflow
+
+1. Confirm dependency and site setup, the skill's `ROOT`, a single service instance, the physical executing hand, and waist hold. If each arm's current end effector is within 10 cm in 3D of its own init, omit repeated initialization before starting. Still use the current state as the new plan's start.
+2. Capture only one fresh `cam_left_high` planning image and state from the same batch. Confirm the full board, side to move, and Black's actual move. Resolve square names using [board and move conventions](prompts/board_and_move_conventions.md). If a compatible current prediction exists, first match it using the [forecast rules](docs/move_forecast.md); only if it is invalid, call the installed engine again and validate with pyffish.
+3. Choose the preferred hand from the source file: a–d left, e–i right. Independently estimate this turn's source/target XYZ, RPY, and clearance from neighboring pieces. The actual gripper opening after opening at the high position must still cover the graspable region; do not copy the source offset to the target. Fully preflight the preferred hand first. Re-estimate and preflight the other hand only when the preferred hand is genuinely unreachable.
+4. Use `scripts/round_tools.py` or `scripts/round_tools_left.py` to create this turn's `runs/` directory, build, and extract submission files. For an ordinary move, issue execute once after full preflight. For a capture, combine removal of the captured piece and movement of the friendly piece into one sequence for preflight and one execute call; continue directly into the second segment after the first segment releases.
+5. Keep the long-running execute session alive. In another call, handle checkpoints with `scripts/serial_checkpoint.py next/submit`. Base each decision and submission only on that checkpoint's head image and the physical executing hand's wrist image. Perfect centering is not required; a grasp may be attempted when the piece is graspable and neighboring clearance is sufficient. If XY is inadequate, return to the high position. If XY permits grasping and only contact height is insufficient, use the automatic 5 mm `adjust_z` according to round_plan. Source-high and target-low XY adjustment each allow at most three attempts; on the third attempt, proceed according to the current workflow. Consult runtime for implementation differences; do not claim that a manual requirement is a service capability.
+6. At release, use the current wrist image to check the expected landing point against the target intersection, neighboring pieces, and unobstructed drop space. After motion, perform only two reviews: use a fresh head image to judge success/offset; use `scripts/review_pose_audit.py` and `scripts/xy_error_history.py finish` to record FK errors for the two events and combine them with the visual conclusion. `placed`, small FK errors, or command acceptance cannot replace confirmation of the actual landing square.
+
+At an ordinary finish, return the executing arm to its own init, keep the other arm at this turn's pose, disable arm control, and retain waist hold. Release waist hold or shut down the service only as explicitly requested for this task. Camera stream names do not necessarily match the physical hand side; use site configuration and this token's `camera_order/camera_selection`.
+
+## Actual capability boundaries
+
+The repository provides planning, service, and image-capture entry points. The main agent session remains responsible for viewing images, orchestrating move selection, estimating positions, and six-/seven-field evaluation. There is no automatic orchestrator such as `play_one_round.py`. Models, templates, and offline tests do not establish accurate grasping on a new device or replace site measurements, full-plan preflight, or actual hardware fault handling.
+
+Report the actions actually completed, the final visual conclusion, available errors, and this turn's artifact paths. Record missing images, snapshots, or execution results explicitly; do not fabricate a successful move or hardware validation.

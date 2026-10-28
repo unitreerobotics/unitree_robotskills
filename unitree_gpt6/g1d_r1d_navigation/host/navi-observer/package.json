@@ -1,0 +1,7 @@
+{
+  "name": "navi-observer",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "description": "Navi 宿主插件：模型思考期间把机器人观测推进 inbox（见 host/navi-observer/index.ts 头注释）。type=module 是必须的——DSH 用 tsx 以 ESM 加载插件；本目录在 DSH 仓库之外，没有这个标记 .ts 会被当成 CJS，import 图直接 ERR_REQUIRE_CYCLE_MODULE。"
+}

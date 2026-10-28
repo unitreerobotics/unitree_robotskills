@@ -1,0 +1,12 @@
+# Camera protocol example only. Replace with the actual server configuration.
+# Save as config/cam_config_client.yaml only after checking site parameters.
+head_camera:
+  enable_zmq: true
+  zmq_port: null
+  binocular: null
+left_wrist_camera:
+  enable_zmq: true
+  zmq_port: null
+right_wrist_camera:
+  enable_zmq: true
+  zmq_port: null

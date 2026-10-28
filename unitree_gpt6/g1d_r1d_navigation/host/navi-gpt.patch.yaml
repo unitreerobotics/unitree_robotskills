@@ -1,0 +1,43 @@
+# host/navi-gpt.patch.yaml -- official OpenAI API (GPT) as the "brain".
+#
+# Unlike bailian / deepseek, this does not override llm-deepseek (it only speaks the Messages protocol and
+# cannot reach OpenAI). Instead it activates llm-pi-ai (id: llm-pi-ai), mounted in dsh-base with zero routes,
+# and gives it an openai route. pi-ai ships its own OpenAI model catalog (endpoint, protocol, context, image
+# support); this file only narrows the selectable models. Models are selected as openai/<id from models below>.
+#
+# Key: env var OPENAI_API_KEY (never write it into this file); if not exported, start.sh prompts for it.
+# Endpoint: OpenAI official by default; for an OpenAI-compatible relay add baseURL: https://<your-gateway>/v1
+# to the openai route below.
+#
+# Fields:
+#   reasoning: low                 Reasoning effort. Driving needs low latency: the longer it thinks, the longer the robot waits.
+#   requestImagePixelBudget        Per-frame pixel budget, same as imagePixelBudget for other providers.
+#   maxRequestImageBytes: 4 MiB    Total image bytes per request; oldest frames become placeholder text when exceeded.
+#   models                         Must support image input; only listed models appear in the picker. Before adding one,
+#                                  check the gateway's names with curl -H "Authorization: Bearer $OPENAI_API_KEY" <baseURL>/models.
+- id: llm-pi-ai
+  name: '@deepseek-ai/dsh-llm-pi-ai'
+  config:
+    providers:
+      openai:
+        apiKeyEnv: OPENAI_API_KEY
+        reasoning: low
+        requestImagePixelBudget: 640000
+        maxRequestImageBytes: 4194304
+        models:                        # All in the pi-ai catalog: capacity/protocol/image support come from it
+          # reasoningEfforts is not pinned, so all levels stay selectable in the UI. The new-session default is
+          # pinned to low by agent-default-model below (driving needs low latency); higher levels think 10-20s
+          # per step while the robot idles -- use them only for comparison experiments.
+          # Default model; to switch, use an image-capable model name available on your account/gateway
+          # (verify with curl <baseURL>/models):
+          - id: gpt-6-astra
+
+# New sessions default to GPT (still switchable in the web dropdown; headless mode uses only this default).
+# reasoningEffort must be explicit: route-level reasoning is only a fallback when the session sets none, and a
+# session carrying high runs at high (observed: 10-20s of thinking per step while the robot walks blind).
+- id: agent-default-model
+  name: '@deepseek-ai/dsh-agent-default-model'
+  config:
+    provider: openai
+    model: gpt-6-astra              # Must match an id in models above
+    reasoningEffort: low

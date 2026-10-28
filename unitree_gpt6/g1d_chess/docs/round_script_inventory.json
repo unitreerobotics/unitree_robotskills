@@ -1,0 +1,214 @@
+{
+  "source_documents": [
+    "SKILL.md",
+    "docs/operation_manual.md",
+    "prompts/round_plan.md"
+  ],
+  "work_root": ".",
+  "verification": {
+    "local_script_files": 46,
+    "core_entry_files": 8,
+    "runtime_modules": 30,
+    "method": "AST local imports and CLI adapter module targets, package-relative paths; offline only",
+    "status": "passed"
+  },
+  "groups": {
+    "core": [
+      "scripts/start_service.sh",
+      "scripts/robot_client.py",
+      "scripts/round_tools.py",
+      "scripts/round_tools_left.py",
+      "scripts/move_constraints.py",
+      "scripts/xy_error_history.py",
+      "scripts/serial_checkpoint.py",
+      "scripts/review_pose_audit.py"
+    ],
+    "service_entry": [
+      "scripts/internal_service.py",
+      "scripts/internal_service_left.py"
+    ],
+    "runtime": [
+      "src/g1d_chess/__init__.py",
+      "src/g1d_chess/board/__init__.py",
+      "src/g1d_chess/board/mark_board.py",
+      "src/g1d_chess/cameras/__init__.py",
+      "src/g1d_chess/cameras/capture_cameras.py",
+      "src/g1d_chess/cameras/imageclient.py",
+      "src/g1d_chess/chess/__init__.py",
+      "src/g1d_chess/chess/move_constraints.py",
+      "src/g1d_chess/chess/review_pose_audit.py",
+      "src/g1d_chess/chess/round_tools.py",
+      "src/g1d_chess/chess/round_tools_left.py",
+      "src/g1d_chess/chess/xy_error_history.py",
+      "src/g1d_chess/paths.py",
+      "src/g1d_chess/robot/__init__.py",
+      "src/g1d_chess/robot/arm_roles.py",
+      "src/g1d_chess/robot/async_event_log.py",
+      "src/g1d_chess/robot/board_guard.py",
+      "src/g1d_chess/robot/camera_policy.py",
+      "src/g1d_chess/robot/checkpoint_runner.py",
+      "src/g1d_chess/robot/dex1_internal.py",
+      "src/g1d_chess/robot/fast_correction.py",
+      "src/g1d_chess/robot/g1_model.py",
+      "src/g1d_chess/robot/grasp_vision.py",
+      "src/g1d_chess/robot/internal_service.py",
+      "src/g1d_chess/robot/internal_service_left.py",
+      "src/g1d_chess/robot/motion_harness.py",
+      "src/g1d_chess/robot/pose_audit.py",
+      "src/g1d_chess/robot/release_alignment.py",
+      "src/g1d_chess/robot/robot_client.py",
+      "src/g1d_chess/robot/serial_checkpoint.py"
+    ],
+    "optional": [
+      "scripts/mark_board.py",
+      "scripts/capture_cameras.py",
+      "scripts/start_left_service.sh"
+    ],
+    "package_support": [
+      "scripts/_bootstrap.py",
+      "scripts/check_environment.py",
+      "scripts/verify_package.py"
+    ]
+  },
+  "local_import_edges": {
+    "src/g1d_chess/paths.py": [],
+    "src/g1d_chess/__init__.py": [],
+    "src/g1d_chess/board/__init__.py": [],
+    "src/g1d_chess/board/mark_board.py": [],
+    "src/g1d_chess/chess/__init__.py": [],
+    "src/g1d_chess/chess/review_pose_audit.py": [
+      "src/g1d_chess/paths.py",
+      "src/g1d_chess/robot/motion_harness.py"
+    ],
+    "src/g1d_chess/chess/xy_error_history.py": [
+      "src/g1d_chess/paths.py"
+    ],
+    "src/g1d_chess/chess/move_constraints.py": [],
+    "src/g1d_chess/chess/round_tools_left.py": [
+      "src/g1d_chess/chess/__init__.py",
+      "src/g1d_chess/chess/round_tools.py"
+    ],
+    "src/g1d_chess/chess/round_tools.py": [
+      "src/g1d_chess/chess/move_constraints.py",
+      "src/g1d_chess/chess/xy_error_history.py",
+      "src/g1d_chess/paths.py",
+      "src/g1d_chess/robot/camera_policy.py"
+    ],
+    "src/g1d_chess/cameras/__init__.py": [],
+    "src/g1d_chess/cameras/capture_cameras.py": [
+      "src/g1d_chess/cameras/imageclient.py"
+    ],
+    "src/g1d_chess/cameras/imageclient.py": [
+      "src/g1d_chess/paths.py"
+    ],
+    "src/g1d_chess/robot/__init__.py": [],
+    "src/g1d_chess/robot/g1_model.py": [
+      "src/g1d_chess/paths.py"
+    ],
+    "src/g1d_chess/robot/dex1_internal.py": [],
+    "src/g1d_chess/robot/fast_correction.py": [
+      "src/g1d_chess/robot/motion_harness.py"
+    ],
+    "src/g1d_chess/robot/internal_service.py": [
+      "src/g1d_chess/cameras/imageclient.py",
+      "src/g1d_chess/paths.py",
+      "src/g1d_chess/robot/async_event_log.py",
+      "src/g1d_chess/robot/board_guard.py",
+      "src/g1d_chess/robot/camera_policy.py",
+      "src/g1d_chess/robot/dex1_internal.py",
+      "src/g1d_chess/robot/fast_correction.py",
+      "src/g1d_chess/robot/grasp_vision.py",
+      "src/g1d_chess/robot/motion_harness.py",
+      "src/g1d_chess/robot/pose_audit.py",
+      "src/g1d_chess/robot/release_alignment.py"
+    ],
+    "src/g1d_chess/robot/internal_service_left.py": [
+      "src/g1d_chess/robot/__init__.py",
+      "src/g1d_chess/robot/arm_roles.py",
+      "src/g1d_chess/robot/internal_service.py"
+    ],
+    "src/g1d_chess/robot/pose_audit.py": [
+      "src/g1d_chess/robot/dex1_internal.py"
+    ],
+    "src/g1d_chess/robot/async_event_log.py": [],
+    "src/g1d_chess/robot/motion_harness.py": [
+      "src/g1d_chess/robot/board_guard.py",
+      "src/g1d_chess/robot/g1_model.py"
+    ],
+    "src/g1d_chess/robot/arm_roles.py": [
+      "src/g1d_chess/robot/motion_harness.py"
+    ],
+    "src/g1d_chess/robot/grasp_vision.py": [],
+    "src/g1d_chess/robot/checkpoint_runner.py": [
+      "src/g1d_chess/robot/camera_policy.py"
+    ],
+    "src/g1d_chess/robot/camera_policy.py": [
+      "src/g1d_chess/paths.py"
+    ],
+    "src/g1d_chess/robot/robot_client.py": [],
+    "src/g1d_chess/robot/board_guard.py": [],
+    "src/g1d_chess/robot/serial_checkpoint.py": [
+      "src/g1d_chess/paths.py",
+      "src/g1d_chess/robot/camera_policy.py",
+      "src/g1d_chess/robot/checkpoint_runner.py"
+    ],
+    "src/g1d_chess/robot/release_alignment.py": [
+      "src/g1d_chess/robot/board_guard.py",
+      "src/g1d_chess/robot/camera_policy.py",
+      "src/g1d_chess/robot/dex1_internal.py",
+      "src/g1d_chess/robot/motion_harness.py"
+    ],
+    "scripts/mark_board.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/board/mark_board.py"
+    ],
+    "scripts/review_pose_audit.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/chess/review_pose_audit.py"
+    ],
+    "scripts/xy_error_history.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/chess/xy_error_history.py"
+    ],
+    "scripts/move_constraints.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/chess/move_constraints.py"
+    ],
+    "scripts/round_tools_left.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/chess/round_tools_left.py"
+    ],
+    "scripts/round_tools.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/chess/round_tools.py"
+    ],
+    "scripts/capture_cameras.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/cameras/capture_cameras.py"
+    ],
+    "scripts/internal_service.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/robot/internal_service.py"
+    ],
+    "scripts/internal_service_left.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/robot/internal_service_left.py"
+    ],
+    "scripts/robot_client.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/robot/robot_client.py"
+    ],
+    "scripts/serial_checkpoint.py": [
+      "scripts/_bootstrap.py",
+      "src/g1d_chess/robot/serial_checkpoint.py"
+    ],
+    "scripts/_bootstrap.py": [],
+    "scripts/check_environment.py": [
+      "src/g1d_chess/robot/motion_harness.py"
+    ],
+    "scripts/verify_package.py": []
+  },
+  "engine": "CHESS_ENGINE or fairy-stockfish on PATH",
+  "rules": "pyffish installed from pyproject.toml 的 chess 组",
+  "model": "assets/models/g1/g1_body29_hand14.urdf"
+}

@@ -1,0 +1,111 @@
+# src/navi_agent/config.example.yaml -- copy to src/navi_agent/config.yaml and edit for your site
+# (config.yaml is not committed).
+#
+# Only list keys you want to override; anything omitted falls back to DEFAULT_CONFIG in
+# src/navi_agent/config.py (deep merge). Defaults are deliberately conservative: map navigation
+# off, speed 0.3 m/s, lidar reflex layer on.
+
+# DDS network interface: auto = detect. On multi-NIC hosts, set the one on the robot's
+# internal network explicitly (e.g. eth0 / enP8p1s0).
+net: auto
+
+motion:
+  move_speed: 0.3          # translation speed of the move tool, m/s (keep conservative on real hardware)
+
+# Robot model (G1D / R1D): detected once at startup; switching robots requires restarting the
+# server. Defaults: config.py DEFAULT_CONFIG["robot"].
+# model: auto probes the candidates read-only; motion is enabled only if exactly one matches,
+#        zero or multiple -> unknown (all motion refused). Explicit g1d / r1d skips probing.
+#        A candidate's net: auto uses the top-level net above.
+# R1D mps_full / rps_full / turn_sign are on-robot calibration values (full-scale speed and
+# turn sign); do not change them without measuring.
+# robot:
+#   model: auto
+#   probe_timeout_s: 2.5
+#   candidates:
+#     - {model: g1d, net: auto, domain_id: 0}
+#     - {model: r1d, net: auto, domain_id: 0}
+#   r1d:
+#     max_vx: 1.0           # linear speed cap m/s (default 1.0; actual speed set by the lidar envelope from forward clearance)
+#     lidar_headway_s: 1.5  # speed envelope: allowed = max(lidar_creep_mps, (path clearance - stop_m) / lidar_headway_s)
+#     lidar_creep_mps: 0.2  # speed still allowed close to obstacles (stops only at stop_m)
+#     # Livox Mid-360 at the chassis front (UDP, not on DDS). Values below are measured defaults
+#     # and usually need not be set. After replacing or remounting the lidar, run
+#     # `cd src/navi_agent && python -m tools.livox_diag` and paste the values it prints.
+#     lidar_ip: 192.168.123.120
+#     lidar_auto_host: true       # on start/stream loss, set the lidar's point-cloud destination to this host (writes lidar config, persistent); false = receive only
+#     lidar_down: [0.505, -0.008, -0.863]   # unit vector toward the ground in lidar frame (30.4 deg pitch down)
+#     lidar_height_m: 0.205       # lidar height above ground, m
+#     lidar_front_offset_m: 0.27  # distance from lidar to front bumper, m; clearance is measured from the bumper
+#     lidar_require: true         # no lidar data blocks forward motion (rear is a blind spot; reversing unaffected)
+#     has_lidar: false            # uncomment = this R1D runs without lidar (falls back to "translate only with a fresh camera frame")
+#     slam: true                  # lidar localization and places (get_localization / save_place / list_places); false = off
+#     slam_dir: data/lidar_map    # map and places dir (relative to src/navi_agent/); stored at <slam_dir>/<navi.memory.venue>/
+#     mps_full: 1.0         # linear speed m/s at normalized cmd_vel 1.0
+#     rps_full: 1.2         # angular speed rad/s at normalized 1.0
+#     turn_sign: -1         # on R1D, negative turn = left
+#     camera_port: 5002     # left-eye RTP-H264 port
+#     camera_auto_switch: true  # listen passively on 5002 for camera_probe_s; if no frames, stop video_hub and start stereo_patch_pc1
+#     camera_probe_s: 3.0       # (camera_auto_switch: false = never touch robot services; switch manually on site)
+#     camera_crop_ratio: 0.5  # besides the ultra-wide full frame (~105 deg), give the model a center crop upscaled to a "normal" FOV (~66 deg); 1.0 = full frame only
+
+camera:
+  host: 192.168.123.164    # robot IP running image_server
+  request_port: 60000
+  camera: head_camera
+  eye: left                # stereo half: left / right / full
+
+navi:
+  # Lidar reflex layer: collision speed clamp that bypasses the LLM (clamps forward motion only, not turning)
+  lidar:
+    enabled: true
+    stop_m: 0.45                 # forward clearance below this (m) -> no forward motion
+    slow_m: 1.2                  # linear slowdown between stop_m and slow_m (m)
+    require: false               # true = no lidar data blocks forward motion (recommended once working on hardware);
+                                 # R1D requires it by default anyway (robot.r1d.lidar_require, forward only)
+    corridor_half_width_m: 0.0   # > 0 enables a travel corridor: only returns within body-frame |y| <= this count
+                                 # as obstacles ahead; 0.30 worked on site for a ~0.5 m wide chassis. With 0 on R1D
+                                 # the model default 0.35 is used.
+
+  sequence:
+    max_vx: 1.0                  # m/s, further capped by the model limit (G1D 0.5, R1D 1.0)
+    max_vyaw: 0.5                # rad/s
+
+  observer:
+    port: 3082                   # 0 = disable the observer status endpoint (also export NAVI_OBSERVER_PORT=0)
+
+  # Topological memory: stored at <dir>/<model>/<venue>/, relative to src/navi_agent/; evidence images stay local
+  memory:
+    dir: data/memory
+    venue: default               # venue name: change manually per site; memories never mix across venues/models
+
+  # Onboard SLAMWARE map navigation (save_place / navigate_to). Off by default (visual pilot only).
+  # Prerequisite: a map of this site already built with the vendor tool, and the robot localized in it.
+  navigation:
+    enabled: false
+    map_id: ""                   # any name identifying this site's map; places are bound to it and rejected after a map change
+    places_file: data/places.json   # relative to src/navi_agent/
+    frame: map                   # must equal rt/robot_pose.header.frame_id
+    mapping:
+      backend: disabled          # slamware_ros = subscribe onboard map/state as a health gate
+
+# ---------------------------------------------------------------------------
+# On-site reference: a set of relaxations that worked on G1D + SLAMWARE.
+# Understand each one before enabling it.
+# ---------------------------------------------------------------------------
+# navi:
+#   lidar:
+#     corridor_half_width_m: 0.30
+#   navigation:
+#     enabled: true
+#     map_id: my-office-2026
+#     frame: robot_pose              # use the actual frame_id reported by navigation_preflight
+#     goal_frame: map                # goal header in map, decoupled from the pose frame
+#     odom_required: false           # detect arrival by pose stillness when there is no odom twist
+#     receipt_time_freshness: true   # judge freshness by receive time when SLAM clock is not synced to host
+#     max_distance_m: 50
+#     pre_align_deg: 60              # turn in place first when the goal is behind/beside (onboard goto often won't move for goals behind)
+#     mapping:
+#       backend: slamware_ros
+#       trust_slam_state: true       # slam_state=connected overrides the numeric quality gate (quality often reads 0 while mapping)
+#       require_map_health: false    # map/boundary/quality advisory only; planning left to onboard SLAMWARE

@@ -1,0 +1,14 @@
+{
+  "decision": "adjust",
+  "actual_relative_offset_xy_m": [
+    0,
+    0
+  ],
+  "reason": "填写本次执行手腕图依据及偏向：预计落点在相邻交点之间、方格中间、明显错开目标，或真正无法判断落点、有碰撞风险，均按需要修正处理；棋子覆盖目标交点本身不算看不清。说明不确定处或风险及有依据的有界非零XY，不能虚构目标识别或位移；保持实际Z/RPY直接低位微调，不抬升。",
+  "target_identified": true,
+  "release_alignment_verified": false,
+  "evidence": [
+    "填写本次下降后、张爪前的头部及执行手腕图路径和判断依据"
+  ],
+  "obvious_large_offset": true
+}

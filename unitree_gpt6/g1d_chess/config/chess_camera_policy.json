@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "planning_camera": "cam_left_high",
+  "head_camera": "cam_left_high",
+  "wrist_stream_by_physical_arm": {
+    "left": null,
+    "right": null
+  },
+  "mapping_evidence": null,
+  "_field_help": {
+    "planning_camera": {
+      "description": "当前代码约定的规划头图逻辑键，必须是cam_left_high。",
+      "example": "cam_left_high"
+    },
+    "head_camera": {
+      "description": "抓放检查点头图逻辑键，当前代码必须是cam_left_high。",
+      "example": "cam_left_high"
+    },
+    "wrist_stream_by_physical_arm": {
+      "description": "观察现场画面确定物理左/右手各对应哪一路；两项必须为不同腕流，未配置会拒绝生成相机选择。",
+      "example": {
+        "left": "cam_left_wrist",
+        "right": "cam_right_wrist"
+      }
+    },
+    "mapping_evidence": {
+      "description": "记录本次确认依据、图像/记录路径和时间；例子中的同名映射仅演示结构，不能推断实际接线。",
+      "example": "<本次两腕画面路径、物理手核对依据、核对时间>"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+robot_model: G1-D
+mode: autonomous
+agent_provider: host_agent
+gomoku:
+  board_size: 19
+  coordinate_notation: row_column
+  color: black
+  rules:
+    win_length: 5
+    overline_wins: true
+    forbidden_moves: false

@@ -1,0 +1,30 @@
+# Linux (glibc >= 2.28), Python 3.10-3.13. Install from the repository root.
+numpy==2.2.6
+scipy==1.15.2
+PyYAML==6.0.3
+pin==4.1.0
+libpinocchio==4.1.0
+coal==3.0.3
+libcoal==3.0.3
+eigenpy==3.13.0
+cmeel==0.61.0
+cmeel-boost==1.90.0
+cmeel-urdfdom==6.0.0
+cmeel-tinyxml2==11.0.0
+cmeel-console-bridge==1.0.2.3
+cmeel-assimp==6.0.5
+cmeel-octomap==1.10.0
+cmeel-qhull==8.0.2.1
+cmeel-zlib==1.3.2
+tomli==2.5.0; python_version < "3.11"
+opencv-python==4.12.0.88
+pyzmq==27.2.0
+cyclonedds==0.10.2
+unitree_sdk2py @ git+https://github.com/unitreerobotics/unitree_sdk2_python.git@65691c8a8bc53b98d3976dba4dbf9d5d20b2e7f5
+rich-click==1.9.9
+click==8.5.0
+rich==15.0.0
+typing-extensions==4.16.0
+markdown-it-py==4.2.0
+mdurl==0.1.2
+Pygments==2.21.0

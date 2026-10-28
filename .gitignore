@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tool caches and coverage
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors and OS files
+.idea/
+.vscode/
+.DS_Store
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.local.yaml
+*.pem
+*.key
+
+# Runtime output and recordings
+/gomoku-workspace/
+reset_right_state.json
+artifacts/
+logs/
+recordings/
+*.log
+
+# Chinese chess: per-run data and site-specific configuration
+/unitree_gpt6/g1d_chess/**/runs/
+/unitree_gpt6/g1d_chess/config/cam_config_client.yaml
+/unitree_gpt6/g1d_chess/config/cam_config_server.yaml
+/unitree_gpt6/g1d_chess/manifest.json

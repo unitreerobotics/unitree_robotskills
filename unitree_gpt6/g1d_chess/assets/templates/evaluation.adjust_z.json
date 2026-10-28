@@ -1,0 +1,14 @@
+{
+  "decision": "adjust_z",
+  "actual_relative_offset_xy_m": [
+    0.0,
+    0.0
+  ],
+  "reason": "示例必须替换：当前头部和执行手腕部两图证实前端相对棋子存在明显可由下降消除的竖直空隙，棋子未深入两指中后段，横向/沿指长对位合适，下降5mm后不会越过尖端夹持区。若只是棋子在两指之间或位置不清，禁止adjust_z。",
+  "source_identified": true,
+  "descent_alignment_verified": false,
+  "evidence": [
+    "REPLACE/current_preclose/cam_left_high.jpg",
+    "REPLACE/current_preclose/ACTOR_WRIST_FROM_CHECKPOINT_CAMERA_ORDER.jpg"
+  ]
+}

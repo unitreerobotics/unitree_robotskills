@@ -1,0 +1,11 @@
+{
+  "decision": "retry_high",
+  "actual_relative_offset_xy_m": [
+    0,
+    0
+  ],
+  "reason": "填写当前两图支持的原因",
+  "source_identified": true,
+  "descent_alignment_verified": false,
+  "evidence": []
+}

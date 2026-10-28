@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "template_requires_site_configuration_not_auto_loaded",
+  "package_root": null,
+  "engine": null,
+  "endpoint": null,
+  "interface": null,
+  "camera_host": null,
+  "gripper_open_sign": 1,
+  "binary_environment_required": true,
+  "_field_help": {
+    "package_root": {
+      "description": "本次部署的包根目录；绝对路径，不是原项目路径。",
+      "example": "/opt/g1d_chess"
+    },
+    "engine": {
+      "description": "外部安装的Fairy-Stockfish可执行文件绝对路径，或PATH中的命令名；通过CHESS_ENGINE设置，不自动读取本JSON。",
+      "example": "/opt/fairy-stockfish/stockfish"
+    },
+    "endpoint": {
+      "description": "启动器与所有客户端必须使用同一本地REP端点；IPC路径需可写。",
+      "example": "ipc:///tmp/g1d_chess_site.sock"
+    },
+    "interface": {
+      "description": "连接机器人DDS网络的实际网卡，填写ip -brief address查询并核实的名称。",
+      "example": "<ROBOT_DDS_INTERFACE>"
+    },
+    "camera_host": {
+      "description": "实际图像服务器主机或IP；示例为文档专用地址，不是可用设备。",
+      "example": "192.0.2.10"
+    },
+    "gripper_open_sign": {
+      "description": "内置Dex1左右爪默认开方向+1：正角度张开、0闭合，普通主机/Python/网络环境迁移无需修改。仅硬件/固件关节约定不同时依据实物覆盖为-1；通过CHESS_GRIPPER_SIGN或CLI传入，本JSON不自动加载。",
+      "example": 1
+    },
+    "binary_environment_required": {
+      "description": "解释器、原生科学计算和DDS库由现场环境提供。",
+      "example": true
+    },
+    "robot_model_dir": {
+      "description": "包内模型URDF和网格目录，不是外部unitree_deploy路径。",
+      "example": "assets/models/g1"
+    },
+    "engine_override": {
+      "description": "显式选择外部象棋引擎的环境变量。",
+      "example": "export CHESS_ENGINE=/opt/fairy-stockfish/stockfish"
+    },
+    "third_party_sources_bundled": {
+      "description": "SDK与棋规库不随包复制，通过pyproject.toml 的 chess 组安装。",
+      "example": false
+    },
+    "robot_models_bundled": {
+      "description": "执行必需的URDF与网格随包保留在robot_model_dir。",
+      "example": true
+    },
+    "python_executable": {
+      "description": "用户已安装chess 组依赖的Python解释器绝对路径；本JSON仅记录，运行时激活该环境或显式调用此路径。",
+      "example": "/opt/robot-env/bin/python"
+    }
+  },
+  "robot_model_dir": "assets/models/g1",
+  "engine_override": "CHESS_ENGINE",
+  "third_party_sources_bundled": false,
+  "robot_models_bundled": true,
+  "python_executable": null
+}

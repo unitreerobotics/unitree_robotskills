@@ -1,0 +1,39 @@
+# host/navi-bailian.patch.yaml -- Alibaba Cloud Bailian (DashScope OpenAI-compatible endpoint) as the "brain".
+#
+# dsh-base already mounts one llm-deepseek row (@deepseek-ai/dsh-llm-deepseek, an OpenAI-compatible adapter).
+# A top-level `- id: llm-deepseek` overrides that row's config to switch endpoint/model without adding a
+# plugin instance (instantiating the same plugin twice registers duplicate provider routes and fails at startup).
+# Models are still selected as deepseek-official/<id from models below>.
+#
+# The three provider patches (bailian / deepseek / gpt) override the same row; only one is layered at a time
+# (handled by start.sh).
+#
+# Key: env var DASHSCOPE_API_KEY (never write it into this file).
+#
+# Fields:
+#   maxTokens: 8192              The adapter default (256000) exceeds the DashScope endpoint limit and is rejected with 400.
+#   maxImagesPerRequest: 4       Send at most the 4 most recent frames; older observe images become placeholder text,
+#                                bounding context size and cost.
+#   imageOffloadCountQuantum: 1  Must be <= maxImagesPerRequest; 1 = drop exactly one frame when over the limit.
+#   contextWindow                Declared value; adjust to the provider's real limit on context-overflow errors.
+#   inputModalities with image   Required -- a model without vision cannot drive the robot.
+- id: llm-deepseek
+  name: '@deepseek-ai/dsh-llm-deepseek'
+  config:
+    apiKeyEnv: DASHSCOPE_API_KEY
+    baseURL: https://dashscope.aliyuncs.com/compatible-mode/v1
+    maxTokens: 8192
+    maxImagesPerRequest: 4
+    imageOffloadCountQuantum: 1
+    models:
+      - id: qwen3-vl-plus
+        name: Qwen3-VL-Plus
+        contextWindow: 131072
+        inputModalities: [text, image]
+        imagePixelBudget: 640000
+
+# Disable the top-level telemetry field dsh_plugin_packages; only the official DeepSeek API accepts it.
+- id: plugin-package-inventory-deepseek
+  name: '@deepseek-ai/dsh-plugin-package-inventory-deepseek'
+  config:
+    enabled: false

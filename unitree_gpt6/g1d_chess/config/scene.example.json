@@ -1,0 +1,56 @@
+{
+  "scene": {
+    "surface_z": null,
+    "uncertainty": null,
+    "finger_end": null,
+    "half_width": null,
+    "half_thickness": null,
+    "travel_clearance": null,
+    "minimum_clearance": null,
+    "xy_tolerance": null,
+    "rotation_tolerance": null
+  },
+  "observation": null,
+  "_field_help": {
+    "scene.surface_z": {
+      "description": "与模型EE同一基座坐标系内的障碍表面最高Z，单位m；优先使用用户给定值；即使用户未提供任何现场信息，也由模型结合可用图像、状态、模型尺度/坐标关系及合理假设自行估计，记录假设与不确定度后用于设置，核对桌面/棋盘。方法见docs/first_game_setup.md第5节。",
+      "example": "<用户给定或模型有依据地评估的表面Z，m；来源另存>"
+    },
+    "scene.uncertainty": {
+      "description": "表面高度和几何估计的不确定度裕量，非负m；用户未提供时由模型按定位、尺寸和坐标误差评估，记录依据。",
+      "example": "<现场确认的非负值，m>"
+    },
+    "scene.finger_end": {
+      "description": "EE局部坐标下工具包络前端x，单位m；优先用户给定，否则结合工具模型、尺寸资料和实物图像评估。",
+      "example": "<夹爪包络前端x，m>"
+    },
+    "scene.half_width": {
+      "description": "EE局部坐标下包络y方向半宽，包含本轮计划开爪范围，单位m；优先用户给定，否则结合工具模型、尺寸资料和实物图像评估。",
+      "example": "<工具包络半宽，m>"
+    },
+    "scene.half_thickness": {
+      "description": "EE局部坐标下包络z方向半厚度，单位m；优先用户给定，否则结合工具模型、尺寸资料和实物图像评估。",
+      "example": "<工具包络半厚，m>"
+    },
+    "scene.travel_clearance": {
+      "description": "常规横移/转姿所需包络净空，单位m；用户未给定时由模型评估，可从代码默认0.040m开始核对；当前不得低于0.030m，默认值不是实测。",
+      "example": "<现场确认的运动净空，m>"
+    },
+    "scene.minimum_clearance": {
+      "description": "工具包络与表面的最小净空，单位m；用户未给定时由模型评估，可从代码默认0.003m开始核对；当前不得低于0.002m，默认值不是实测。",
+      "example": "<现场确认的最小净空，m>"
+    },
+    "scene.xy_tolerance": {
+      "description": "运行时判断同XY位置的容差，单位m；用户未给定时可核对并采用代码默认0.001m，注明来源，不是抓取视觉精度。",
+      "example": "<运行时确认的XY容差，m>"
+    },
+    "scene.rotation_tolerance": {
+      "description": "运行时判断同姿态的旋转角容差，单位rad；用户未给定时可核对并采用代码默认0.008rad，注明来源。",
+      "example": "<运行时确认的旋转容差，rad>"
+    },
+    "observation": {
+      "description": "记录本次逐字段数值来源（用户给定/模型估计/代码默认）、单位与坐标系、图像和状态路径、模型版本、测量或估计方法及误差、时间和适用条件；详存本次run的tmp/scene_assessment.json，请求仅含scene。用户未提供信息时由模型自行完成估计并继续设置，无需将补充资料或确认为前置条件；估计值标注为估计，不称作实测。",
+      "example": "<本次scene_assessment.json及其图像/状态/模型依据>"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "adjust",
+  "actual_relative_offset_xy_m": [
+    0.003,
+    -0.002
+  ],
+  "reason": "示例偏移不可照搬：source已确认；仅在高位依据当前头部和执行手腕部两图，相对本检查点实际FK向x正3mm、y负2mm修正后复拍。",
+  "source_identified": true,
+  "descent_alignment_verified": false,
+  "evidence": [
+    "REPLACE/current_checkpoint/cam_left_high.jpg",
+    "REPLACE/current_checkpoint/ACTOR_WRIST_FROM_CHECKPOINT_CAMERA_ORDER.jpg"
+  ]
+}

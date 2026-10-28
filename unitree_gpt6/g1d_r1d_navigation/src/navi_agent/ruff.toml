@@ -1,0 +1,19 @@
+# navi_agent is the runtime that drives real hardware (flat import layout).
+# Inherits the repo-root Ruff config and only relaxes layout rules; excluded from ruff format
+# so hardware-driving code is never mass-reformatted.
+extend = "../../../../pyproject.toml"
+src = ["."]  # flat layout: config / core / services are first-party
+
+[lint]
+extend-ignore = [
+    "E501",  # line length
+    "E701",  # one-line if/for
+    "E702",  # semicolon-separated statements
+    "UP009", # utf-8 coding declaration
+    "UP022", # stdout/stderr=PIPE style
+    "UP031", # % formatting
+    "B905",  # zip() without strict=
+]
+
+[format]
+exclude = ["*"]

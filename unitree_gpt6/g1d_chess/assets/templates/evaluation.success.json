@@ -1,0 +1,14 @@
+{
+  "decision": "success",
+  "actual_relative_offset_xy_m": [
+    0.0,
+    0.0
+  ],
+  "reason": "示例，请替换为本检查点头部和执行手腕部两图结论：source已确认，棋子居于两指有效夹持区，允许当前阶段的下降或闭爪。",
+  "source_identified": true,
+  "descent_alignment_verified": true,
+  "evidence": [
+    "REPLACE/current_checkpoint/cam_left_high.jpg",
+    "REPLACE/current_checkpoint/ACTOR_WRIST_FROM_CHECKPOINT_CAMERA_ORDER.jpg"
+  ]
+}
