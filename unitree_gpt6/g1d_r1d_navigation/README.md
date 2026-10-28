@@ -73,7 +73,7 @@ No robot connection is required. The stub replaces camera frames with numbered s
 ```bash
 cd unitree_gpt6/g1d_r1d_navigation                          # all commands in this README are run from the skill directory
 python3 -m venv .venv && source .venv/bin/activate      # or: conda create -n navi python=3.10
-python -m pip install -e '../..[navigation]'
+python -m pip install -r requirements.txt
 ```
 
 ### 2.2 Prepare the Host (DeepSeek-Harness)

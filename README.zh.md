@@ -65,7 +65,7 @@ Agent 自主完成闭环：观察 → 推理 → 执行 → 验证。新增任�
 
 | 技能 | 机器人 | Agent 完成的工作 | 接口 |
 | --- | --- | --- | --- |
-| [g1d_draw](unitree_gpt6/g1d_draw/README.zh.md) | G1-D | 规划笔画、测量纸面与材料点、离线编译轨迹，再通过 SDK 执行绘制 | `robot-paint-execute` 工作流 |
+| [g1d_draw](unitree_gpt6/g1d_draw/README.zh.md) | G1-D | 规划笔画、测量纸面与材料点、离线编译轨迹，再通过 SDK 执行绘制 | [SKILL.zh.md](unitree_gpt6/g1d_draw/SKILL.zh.md) |
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.zh.md) | G1-D | 通过四路相机识别 19×19 棋局，自主选点，右臂抓放棋子并归位；松爪前征得用户确认 | [SKILL.zh.md](unitree_gpt6/g1d_gomoku/SKILL.zh.md)、自主轮次 CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.zh.md) | G1-D | 识别中国象棋棋局，调用 Fairy-Stockfish 规划本轮走法，左右手抓放、处理吃子并复盘结果 | [SKILL.zh.md](unitree_gpt6/g1d_chess/SKILL.zh.md)、服务与单轮脚本 |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.zh.md) | R1-D / G1-D | 依据自然语言指令，通过 MCP 工具自主导航：观察画面、移动、移动中持续推理，并可记录与返回地点 | MCP 工具服务；另有确定性预览 CLI |

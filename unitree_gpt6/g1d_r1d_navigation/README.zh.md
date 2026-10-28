@@ -73,7 +73,7 @@
 ```bash
 cd unitree_gpt6/g1d_r1d_navigation                          # 本文档中的命令均在技能目录下执行
 python3 -m venv .venv && source .venv/bin/activate      # 或 conda create -n navi python=3.10
-python -m pip install -e '../..[navigation]'
+python -m pip install -r requirements.txt
 ```
 
 ### 2.2 准备宿主（DeepSeek-Harness）

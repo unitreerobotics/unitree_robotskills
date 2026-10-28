@@ -63,7 +63,7 @@ The agent closes the loop autonomously: observe → reason → act → verify. A
 
 | Skill | Robot | What the agent does | Interface |
 | --- | --- | --- | --- |
-| [g1d_draw](unitree_gpt6/g1d_draw/README.md) | G1-D | Plans strokes, measures the paper and material points, compiles trajectories offline, then paints through the SDK | `robot-paint-execute` workflow |
+| [g1d_draw](unitree_gpt6/g1d_draw/README.md) | G1-D | Plans strokes, measures the paper and material points, compiles trajectories offline, then paints through the SDK | [SKILL.md](unitree_gpt6/g1d_draw/SKILL.md) |
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.md) | G1-D | Recognizes the 19×19 board from four cameras, selects a move, picks and places the stone with the right arm and returns to home; asks for user confirmation before releasing the gripper | [SKILL.md](unitree_gpt6/g1d_gomoku/SKILL.md), autonomous-round CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.md) | G1-D | Recognizes the Chinese chess board, plans the move for the current round with Fairy-Stockfish, picks and places with either hand, handles captures and reviews the result | [SKILL.md](unitree_gpt6/g1d_chess/SKILL.md), service and single-round scripts |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.md) | R1-D / G1-D | Navigates autonomously from natural-language instructions through MCP tools: observes, moves, keeps reasoning while in motion, and records and returns to places | MCP tool server; plus a deterministic preview CLI |

@@ -33,10 +33,10 @@ conda activate gomoku
 Then install from the repository root:
 
 ```bash
-python -m pip install '.[gomoku-hardware]'
+python -m pip install -r unitree_gpt6/g1d_gomoku/requirements.txt
 ```
 
-The DDS communication SDK for G1 and Dex1 is bundled in [unitree_sdk2py/](src/unitree_sdk2py/VENDORED.md) and is installed with the project; the hardware extra installs the remaining numerical and communication libraries. Pinocchio must include `pinocchio.casadi`; installing `pin` and `casadi` via pip alone does not guarantee that binding. The SDK keeps its upstream BSD 3-Clause license.
+The DDS communication SDK for G1 and Dex1 is bundled in [unitree_sdk2py/](src/unitree_sdk2py/VENDORED.md) and is used directly from the checkout; requirements.txt installs the numerical and communication dependencies. Pinocchio must include `pinocchio.casadi`; installing `pin` and `casadi` via pip alone does not guarantee that binding. The SDK keeps its upstream BSD 3-Clause license.
 
 The G1 model is bundled in [unitree_gpt6/g1d_gomoku/models/g1/](models/g1/README.md), including `G1_29_ArmIK`, joint configuration and indices, the URDF and all 49 referenced meshes.
 

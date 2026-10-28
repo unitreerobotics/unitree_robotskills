@@ -33,10 +33,10 @@ conda activate gomoku
 然后从仓库根目录安装：
 
 ```bash
-python -m pip install '.[gomoku-hardware]'
+python -m pip install -r unitree_gpt6/g1d_gomoku/requirements.txt
 ```
 
-G1 和 Dex1 的 DDS 通信 SDK 已内置于 [unitree_sdk2py/](src/unitree_sdk2py/VENDORED.md)，随工程安装；硬件依赖项安装其余数值库与通信库。Pinocchio 必须包含 `pinocchio.casadi`；仅通过 pip 安装 `pin` 和 `casadi` 不保证具备该绑定。SDK 保留上游 BSD 3-Clause 许可证。
+G1 和 Dex1 的 DDS 通信 SDK 已内置于 [unitree_sdk2py/](src/unitree_sdk2py/VENDORED.md)，直接从仓库源码使用；requirements.txt 安装所需数值库与通信库。Pinocchio 必须包含 `pinocchio.casadi`；仅通过 pip 安装 `pin` 和 `casadi` 不保证具备该绑定。SDK 保留上游 BSD 3-Clause 许可证。
 
 G1 模型已内置于 [unitree_gpt6/g1d_gomoku/models/g1/](models/g1/README.zh.md)，包含 `G1_29_ArmIK`、关节配置与索引、URDF 和全部 49 个引用网格。
 

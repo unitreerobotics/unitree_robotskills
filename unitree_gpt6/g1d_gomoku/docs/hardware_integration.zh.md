@@ -15,15 +15,15 @@ conda create -n gomoku -c conda-forge python=3.10 'pinocchio>=3,<5' 'casadi>=3.6
 conda activate gomoku
 ```
 
-再从仓库根目录安装可选依赖：
+再从仓库根目录安装硬件依赖：
 
 ```bash
-python -m pip install '.[gomoku-hardware]'
+python -m pip install -r unitree_gpt6/g1d_gomoku/requirements.txt
 ```
 
 [Unitree SDK2 Python](../src/unitree_sdk2py/VENDORED.md) 已内置，提供 G1/Dex1 的 DDS 消息、发布器和 CRC；上述安装命令会一并安装其通信依赖。
 
-G1 模型层已整合在 [unitree_gpt6/g1d_gomoku/models/g1/](../models/g1/README.zh.md)：包含 `G1_29_ArmIK`、`G1ArmConfig`、`G1_29_JointArmIndex`、G1 URDF 和 49 个网格文件，按包内相对位置加载。安装包已包含这些资源。来源、版本、哈希和许可证见模型目录的 `manifest.json` 与 `licenses/`。
+G1 模型层已整合在 [unitree_gpt6/g1d_gomoku/models/g1/](../models/g1/README.zh.md)：包含 `G1_29_ArmIK`、`G1ArmConfig`、`G1_29_JointArmIndex`、G1 URDF 和 49 个网格文件，按包内相对位置加载。仓库源码已包含这些资源。来源、版本、哈希和许可证见模型目录的 `manifest.json` 与 `licenses/`。
 
 `pinocchio`、`pinocchio.casadi` 和 `casadi` 必须在同一个 Python 环境可导入。
 PyPI 的 `pin` wheel 不一定包含 CasADi 绑定，单独安装 `casadi` 也不会为 Pinocchio 补上它。
