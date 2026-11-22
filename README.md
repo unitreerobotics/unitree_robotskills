@@ -22,20 +22,26 @@
 
 <table>
   <tr>
-    <td align="center" width="25%">
+    <td align="center" colspan="2" width="33%">
       <a href="assets/demo_draw.mp4"><img src="assets/preview_draw.gif" alt="Painting" width="100%"></a>
       <p><b>Painting</b><br>G1-D</p>
     </td>
-    <td align="center" width="25%">
-      <a href="assets/demo_gomoku.mp4"><img src="assets/preview_gomoku.gif" alt="Gomoku" width="100%"></a>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_gomoku.mp4"><img src="assets/preview_gomoku.gif" alt="Gomoku on G1-D" width="100%"></a>
       <p><b>Gomoku</b><br>G1-D</p>
     </td>
-    <td align="center" width="25%">
+    <td align="center" colspan="2" width="33%">
       <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="Chinese Chess" width="100%"></a>
       <p><b>Chinese Chess</b><br>G1-D</p>
     </td>
-    <td align="center" width="25%">
-      <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="Navigation" width="100%"></a>
+  </tr>
+  <tr>
+    <td align="center" colspan="3" width="50%">
+      <a href="assets/demo_gomuku_r1d.mp4"><img src="assets/preview_gomoku_r1d.gif" alt="Gomoku on R1-D" width="66%"></a>
+      <p><b>Gomoku</b><br>R1-D</p>
+    </td>
+    <td align="center" colspan="3" width="50%">
+      <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="Navigation" width="66%"></a>
       <p><b>Navigation</b><br>R1-D</p>
     </td>
   </tr>
