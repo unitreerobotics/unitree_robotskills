@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Agent 手动控制 R1-D 下象棋的统一入口：bash r1d <子命令> 等价于 python scripts/<对应入口>.py（实现在 src/r1d_chess/）。
+set -euo pipefail
+CHESS_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+# Interpreter: R1D_CHESS_PYTHON, else <package>/.venv/bin/python, else python3 on PATH.
+CHESS_PYTHON=${R1D_CHESS_PYTHON:-}
+if [ -z "$CHESS_PYTHON" ]; then
+  if [ -x "$CHESS_ROOT/.venv/bin/python" ]; then CHESS_PYTHON="$CHESS_ROOT/.venv/bin/python"; else CHESS_PYTHON=python3; fi
+fi
+CHESS_COMMAND=${1:-help}
+if [ "$#" -gt 0 ]; then shift; fi
+case "$CHESS_COMMAND" in
+  serve) CHESS_SCRIPT=scripts/serve.py ;;
+  runtime) CHESS_SCRIPT=scripts/r1d_runtime.py ;;
+  client) CHESS_SCRIPT=scripts/robot_client.py ;;
+  round) CHESS_SCRIPT=scripts/round_tools.py ;;
+  serial) CHESS_SCRIPT=scripts/serial_checkpoint.py ;;
+  engine) CHESS_SCRIPT=scripts/xiangqi.py ;;
+  candidates) CHESS_SCRIPT=scripts/preflight_candidates.py ;;
+  board) CHESS_SCRIPT=scripts/board_registration.py ;;
+  handover) CHESS_SCRIPT=scripts/handover.py ;;
+  retract) CHESS_SCRIPT=scripts/retract.py ;;
+  goinit) CHESS_SCRIPT=scripts/go_init.py ;;
+  gate) CHESS_SCRIPT=scripts/gate_submit.py ;;
+  boardcal) CHESS_SCRIPT=scripts/board_calibrate.py ;;
+  start) CHESS_SCRIPT=scripts/start.py ;;
+  boardview) CHESS_SCRIPT=scripts/board_view.py ;;
+  fencheck) CHESS_SCRIPT=scripts/fen_check.py ;;
+  boardpoints) CHESS_SCRIPT=scripts/board_points.py ;;
+  pose) CHESS_SCRIPT=scripts/grip_pose.py ;;
+  review) CHESS_SCRIPT=scripts/review_pose_audit.py ;;
+  history) CHESS_SCRIPT=scripts/xy_error_history.py ;;
+  *) printf '%s\n' 'Usage: bash r1d {serve|runtime|client|round|serial|engine|candidates|board|boardview|fencheck|boardpoints|boardcal|handover|retract|goinit|start|gate|pose|review|history} [arguments]'; exit 0 ;;
+esac
+exec "$CHESS_PYTHON" -B "$CHESS_ROOT/$CHESS_SCRIPT" "$@"

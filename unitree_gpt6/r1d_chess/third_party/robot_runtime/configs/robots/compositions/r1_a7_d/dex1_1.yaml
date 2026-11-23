@@ -1,0 +1,23 @@
+body: configs/robots/components/joint_groups/bodies/r1_a7_d.yaml
+end_effectors:
+- configs/robots/components/joint_groups/end_effectors/unitree/dex1_1_left.yaml
+- configs/robots/components/joint_groups/end_effectors/unitree/dex1_1_right.yaml
+base_group: configs/robots/components/base_groups/r1_d_base.yaml
+sensors:
+  imu: configs/robots/components/sensors/imu/default.yaml
+  color_camera: configs/robots/components/sensors/color_camera/teleimager.yaml
+kinematics:
+  dual_arm:
+    urdf_path: components/bodies/r1_a7_d/r1_a7.urdf
+    end_effector_translation: [0.05, 0.0, 0.0]
+    rotation_cost_weight: 0.35
+reset_pose:
+  joint_velocity_limit: 0.8
+  joint_tolerance: 0.15
+  joint_groups:
+    waist: [0.0]
+    left_arm: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    right_arm: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    head: [0.0, 0.0]
+    left_ee: [2.7]
+    right_ee: [2.7]

@@ -1,0 +1,232 @@
+{
+  "repository": "https://github.com/unitreerobotics/unitree_ros",
+  "source_directory": "robots/r1d_description/",
+  "commit": "31d9427f0958d30d824a3a2b79603bf1c0b80fd0",
+  "commit_message": "update R1D joint limit",
+  "files": [
+    {
+      "path": "meshes/Camera.STL",
+      "bytes": 338084,
+      "git_blob_sha": "a2cb04f008c8842a868b6f753ebdf3498136be0e"
+    },
+    {
+      "path": "meshes/Dex1_base_link.STL",
+      "bytes": 1261084,
+      "git_blob_sha": "e895db5c26a421dd38137d7bae50174882987b13"
+    },
+    {
+      "path": "meshes/Dex1_finger_link_1.STL",
+      "bytes": 478484,
+      "git_blob_sha": "86df5ab734c5456226c7ea2f7095fea2cf02ef52"
+    },
+    {
+      "path": "meshes/Dex1_finger_link_2.STL",
+      "bytes": 478484,
+      "git_blob_sha": "1e4e062c1fd4123488c8857d6cc50128c96d1f48"
+    },
+    {
+      "path": "meshes/Left_Wheel_link.STL",
+      "bytes": 470084,
+      "git_blob_sha": "a0d1f5942126a513f9b1b908c41b5318ff90d249"
+    },
+    {
+      "path": "meshes/Right_Wheel_link.STL",
+      "bytes": 470084,
+      "git_blob_sha": "a23f37206434e9aaa9e4961de873cf14e2cbfc3d"
+    },
+    {
+      "path": "meshes/base_link.STL",
+      "bytes": 4181384,
+      "git_blob_sha": "1146359f1adae9e23fb4b1596f473e39b82f2be4"
+    },
+    {
+      "path": "meshes/front_left_caster_Roll_link.STL",
+      "bytes": 294484,
+      "git_blob_sha": "c9f9d5c022cf4eceac5ed317deeb5f963c3aec0b"
+    },
+    {
+      "path": "meshes/front_left_caster_Yaw_link.STL",
+      "bytes": 301384,
+      "git_blob_sha": "276d47ec9b27d87b0ec910d004b71a96eb322967"
+    },
+    {
+      "path": "meshes/front_right_caster_Roll_link.STL",
+      "bytes": 294484,
+      "git_blob_sha": "46482da4190ab33d335855001495ead71d187ff5"
+    },
+    {
+      "path": "meshes/front_right_caster_Yaw_link.STL",
+      "bytes": 301384,
+      "git_blob_sha": "6adb24dee0c79a1349f9989eb846d8ce51a29174"
+    },
+    {
+      "path": "meshes/head_pitch_Link.STL",
+      "bytes": 279084,
+      "git_blob_sha": "573ca6e4323be21e4b98e74137b28a3576476069"
+    },
+    {
+      "path": "meshes/head_yaw_Link.STL",
+      "bytes": 1122384,
+      "git_blob_sha": "5fc1ec5f5a654d14342e1c3fbffbcced1db9d906"
+    },
+    {
+      "path": "meshes/left_elbow_link.STL",
+      "bytes": 373384,
+      "git_blob_sha": "559f1b11934bc6385dacc11e27288dbfc8dc3474"
+    },
+    {
+      "path": "meshes/left_shoulder_pitch_Link.STL",
+      "bytes": 420084,
+      "git_blob_sha": "3a6e2c51f936039c12a6aa16efdeabc6da88a929"
+    },
+    {
+      "path": "meshes/left_shoulder_roll_link.STL",
+      "bytes": 542884,
+      "git_blob_sha": "2b0f75cec92e89f31b485bc310423830ac4ff7ee"
+    },
+    {
+      "path": "meshes/left_shoulder_yaw_link.STL",
+      "bytes": 649584,
+      "git_blob_sha": "6f9f6178b855e6be6cf4fcbe83faa970f1aecabc"
+    },
+    {
+      "path": "meshes/left_wrist_pitch_link.STL",
+      "bytes": 527484,
+      "git_blob_sha": "53bbef5920db3b25a7198db5f08f4205b02c8ad7"
+    },
+    {
+      "path": "meshes/left_wrist_roll_link.STL",
+      "bytes": 165084,
+      "git_blob_sha": "7d91a14f803950be81639e295eef4ce262aaa66b"
+    },
+    {
+      "path": "meshes/left_wrist_yaw_link.STL",
+      "bytes": 657784,
+      "git_blob_sha": "0a42723277659d04c307c30c7e5f930728a253e4"
+    },
+    {
+      "path": "meshes/lift_mount_link.STL",
+      "bytes": 12284,
+      "git_blob_sha": "bb1ca499b3b81059e32f6583351a94fad866811b"
+    },
+    {
+      "path": "meshes/lift_stage1_link.STL",
+      "bytes": 28884,
+      "git_blob_sha": "ee3a489432cec25319b98b05ce123587df5e314f"
+    },
+    {
+      "path": "meshes/lift_stage2_link.STL",
+      "bytes": 69984,
+      "git_blob_sha": "55e0d680fae52547b3d5d5fcdb7b205611c6f0b6"
+    },
+    {
+      "path": "meshes/pelvis_link.STL",
+      "bytes": 18884,
+      "git_blob_sha": "9537059fb35b58ddc9f7b129060a5ef50c5ba1f5"
+    },
+    {
+      "path": "meshes/rear_left_caster_Roll_link.STL",
+      "bytes": 294484,
+      "git_blob_sha": "2af9d206b65bcfe0c6baa0f518911285a215a319"
+    },
+    {
+      "path": "meshes/rear_left_caster_Yaw_link.STL",
+      "bytes": 301384,
+      "git_blob_sha": "23134bd1af9cbbf808c2f38fe341e3075ac7072d"
+    },
+    {
+      "path": "meshes/rear_right_caster_Roll_link.STL",
+      "bytes": 294484,
+      "git_blob_sha": "4ec33bd689155fca567035614b75e8a5b060dccc"
+    },
+    {
+      "path": "meshes/rear_right_caster_Yaw_link.STL",
+      "bytes": 301384,
+      "git_blob_sha": "c35cffe22e5c6ab67b719430e3cdab702654ab63"
+    },
+    {
+      "path": "meshes/right_elbow_link.STL",
+      "bytes": 365284,
+      "git_blob_sha": "e390388ff82814ab2fd43a70b24f4bc6f67d9bf1"
+    },
+    {
+      "path": "meshes/right_shoulder_pitch_Link.STL",
+      "bytes": 425184,
+      "git_blob_sha": "1166694b81011fa8b1e0f620dab539792b07a461"
+    },
+    {
+      "path": "meshes/right_shoulder_roll_link.STL",
+      "bytes": 535034,
+      "git_blob_sha": "06d36de01ece39a9ee68608f95ce2e46581098fb"
+    },
+    {
+      "path": "meshes/right_shoulder_yaw_link.STL",
+      "bytes": 643184,
+      "git_blob_sha": "b6d3b88334d2341101208c5d3da23a396c9b981f"
+    },
+    {
+      "path": "meshes/right_wrist_pitch_link.STL",
+      "bytes": 527584,
+      "git_blob_sha": "b146ef71e5582e8c6bf0a775c969f7fac7c1bf7e"
+    },
+    {
+      "path": "meshes/right_wrist_roll_link.STL",
+      "bytes": 164084,
+      "git_blob_sha": "47745db54c64a9463fdb19895a7666a686638af7"
+    },
+    {
+      "path": "meshes/right_wrist_yaw_link.STL",
+      "bytes": 657284,
+      "git_blob_sha": "d22aa69412b175332828ae677129354f203d4a66"
+    },
+    {
+      "path": "meshes/waist_yaw_link.STL",
+      "bytes": 2065984,
+      "git_blob_sha": "34c01e9610d7424f398f8de31b237a7ac433d3fd"
+    },
+    {
+      "path": "r1d.urdf",
+      "bytes": 41014,
+      "git_blob_sha": "b153062422041bcc7d5a517c2e0ea57094e495d1"
+    }
+  ],
+  "mesh_references": [
+    "meshes/Camera.STL",
+    "meshes/Dex1_base_link.STL",
+    "meshes/Dex1_finger_link_1.STL",
+    "meshes/Dex1_finger_link_2.STL",
+    "meshes/Left_Wheel_link.STL",
+    "meshes/Right_Wheel_link.STL",
+    "meshes/base_link.STL",
+    "meshes/front_left_caster_Roll_link.STL",
+    "meshes/front_left_caster_Yaw_link.STL",
+    "meshes/front_right_caster_Roll_link.STL",
+    "meshes/front_right_caster_Yaw_link.STL",
+    "meshes/head_pitch_Link.STL",
+    "meshes/head_yaw_Link.STL",
+    "meshes/left_elbow_link.STL",
+    "meshes/left_shoulder_pitch_Link.STL",
+    "meshes/left_shoulder_roll_link.STL",
+    "meshes/left_shoulder_yaw_link.STL",
+    "meshes/left_wrist_pitch_link.STL",
+    "meshes/left_wrist_roll_link.STL",
+    "meshes/left_wrist_yaw_link.STL",
+    "meshes/lift_mount_link.STL",
+    "meshes/lift_stage1_link.STL",
+    "meshes/lift_stage2_link.STL",
+    "meshes/pelvis_link.STL",
+    "meshes/rear_left_caster_Roll_link.STL",
+    "meshes/rear_left_caster_Yaw_link.STL",
+    "meshes/rear_right_caster_Roll_link.STL",
+    "meshes/rear_right_caster_Yaw_link.STL",
+    "meshes/right_elbow_link.STL",
+    "meshes/right_shoulder_pitch_Link.STL",
+    "meshes/right_shoulder_roll_link.STL",
+    "meshes/right_shoulder_yaw_link.STL",
+    "meshes/right_wrist_pitch_link.STL",
+    "meshes/right_wrist_roll_link.STL",
+    "meshes/right_wrist_yaw_link.STL",
+    "meshes/waist_yaw_link.STL"
+  ],
+  "missing_mesh_references": []
+}

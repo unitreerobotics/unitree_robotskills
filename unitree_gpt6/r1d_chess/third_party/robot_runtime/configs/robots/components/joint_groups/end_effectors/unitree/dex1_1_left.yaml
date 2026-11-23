@@ -1,0 +1,16 @@
+component_id: end_effector.unitree.dex1_1.left
+motor_slots: 1
+temperature_thresholds:
+  casing_temp: {trigger: 85.0, release: 80.0}
+  winding_temp: {trigger: 120.0, release: 115.0}
+joint_groups:
+- schema_key: left_ee
+  joint_names:
+  - Joint_1
+  indices: [0]
+  kp: [5.0]
+  kd: [0.05]
+  qpos_min: [0.0]
+  qpos_max: [5.4]
+  qpos_open: [5.4]
+  qpos_closed: [0.0]

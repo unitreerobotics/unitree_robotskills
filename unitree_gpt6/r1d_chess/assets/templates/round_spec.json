@@ -1,0 +1,37 @@
+{
+  "side": "红方",
+  "game_id": null,
+  "round_number": null,
+  "move_plan": null,
+  "max_grasp_attempts": 3,
+  "source_square": null,
+  "target_square": null,
+  "xy_error_context": null,
+  "xy_error_reference_review": null,
+  "xy_error_previous_journal": null,
+  "move_kind": "normal",
+  "source": {
+    "xy_m": null,
+    "z_m": null,
+    "rpy_rad": null,
+    "evidence": null
+  },
+  "target": {
+    "xy_m": null,
+    "z_m": null,
+    "rpy_rad": null,
+    "evidence": null
+  },
+  "capture": null,
+  "gripper_open_q": 2.3,
+  "gate_z_m": null,
+  "travel_z_m": null,
+  "staging_xy_m": null,
+  "speed_scale": 1.0,
+  "ignore_source_tool_envelope": false,
+  "scene_and_neighbors_review": null,
+  "board_registration_review": null,
+  "pose_context_review": null,
+  "move_legality_review": null,
+  "board_state_file": null
+}

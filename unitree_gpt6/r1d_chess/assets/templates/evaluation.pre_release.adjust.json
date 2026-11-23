@@ -1,0 +1,14 @@
+{
+  "decision": "adjust",
+  "actual_relative_offset_xy_m": [
+    0,
+    0
+  ],
+  "reason": "填写本次两图依据、目标交点及明确非零XY，保持实际Z/RPY。此模板默认不批准修正后直接释放。若corrections_remaining=1，必须已有充分依据确认修正后的预计落点能安全释放，才将release_alignment_verified设为true并在此说明；无法确认时用failure停止并持棋，不能因额度耗尽批准。",
+  "target_identified": true,
+  "release_alignment_verified": false,
+  "evidence": [
+    "填写本次下降后、张爪前的头部及执行手腕图路径和判断依据"
+  ],
+  "obvious_large_offset": true
+}

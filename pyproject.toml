@@ -77,6 +77,20 @@ chess = [
     "unitree_sdk2py @ git+https://github.com/unitreerobotics/unitree_sdk2_python.git@65691c8a8bc53b98d3976dba4dbf9d5d20b2e7f5",
 ]
 
+chess-r1d = [
+    "numpy==1.26.4",
+    "scipy==1.14.1",
+    "opencv-python==4.11.0.86",
+    "pyzmq==27.2.0",
+    "msgspec==0.20.0",
+    "PyYAML==6.0.3",
+    "logging_mp==0.2.5",
+    "typing_extensions>=4.12",
+    "cyclonedds==0.10.2",
+    "pyffish==0.0.89",
+    "unitree_sdk2py @ git+https://github.com/unitreerobotics/unitree_sdk2_python.git@814556d15970dd2ecf1c9984e845ca02ab07e206",
+]
+
 navigation = [
     "mcp>=1.2,<2",
     "numpy>=1.21",
@@ -109,6 +123,7 @@ exclude = ["*.tests", "*.tests.*", "*.test", "*.test.*"]
 "unitree_gpt6.r1d_draw" = ["README*.md", "SKILL*.md", "config/*.json", "scripts/*"]
 "unitree_gpt6.g1d_gomoku.src.unitree_sdk2py" = ["LICENSE", "VENDORED.md", "manifest.json", "utils/lib/*.so"]
 "unitree_gpt6.g1d_chess" = ["SKILL*.md"]
+"unitree_gpt6.r1d_chess" = ["SKILL*.md"]
 "unitree_gpt6.g1d_gomoku" = [
     "README*.md", "ARCHITECTURE*.md", "SKILL*.md", "docs/*.md", "assets/*.json", "assets/*.md",
     "config/*.json", "config/*.md", "experience/*.json",
@@ -118,8 +133,8 @@ exclude = ["*.tests", "*.tests.*", "*.test", "*.test.*"]
 ]
 
 [tool.ruff]
-# g1d_chess and r17a_marker_sort keep their original source layout.
-extend-exclude = ["unitree_gpt6/g1d_gomoku/src/unitree_sdk2py", "unitree_gpt6/g1d_chess", "unitree_gpt6/r17a_marker_sort"]
+# g1d_chess, r1d_chess and r17a_marker_sort keep their original source layout.
+extend-exclude = ["unitree_gpt6/g1d_gomoku/src/unitree_sdk2py", "unitree_gpt6/g1d_chess", "unitree_gpt6/r1d_chess", "unitree_gpt6/r17a_marker_sort"]
 target-version = "py310"
 line-length = 100
 

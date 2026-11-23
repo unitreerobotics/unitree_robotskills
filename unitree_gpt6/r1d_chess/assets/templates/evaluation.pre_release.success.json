@@ -1,0 +1,14 @@
+{
+  "decision": "success",
+  "actual_relative_offset_xy_m": [
+    0,
+    0
+  ],
+  "reason": "填写本次执行手腕图依据：已下降到释放高度，预计棋子落点在目标交点附近，不在相邻交点之间或方格中间；棋子覆盖交点不属于看不清，可由可见格线延伸、邻近交点及棋子中心判断。仅小幅偏心且可安全释放，直接原位张爪，不要求完全精准对齐。",
+  "target_identified": true,
+  "release_alignment_verified": true,
+  "evidence": [
+    "填写本次下降后、张爪前的头部及执行手腕图路径和判断依据"
+  ],
+  "obvious_large_offset": false
+}

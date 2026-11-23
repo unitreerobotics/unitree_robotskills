@@ -39,3 +39,8 @@ recordings/
 /unitree_gpt6/g1d_chess/config/cam_config_client.yaml
 /unitree_gpt6/g1d_chess/config/cam_config_server.yaml
 /unitree_gpt6/g1d_chess/manifest.json
+
+# Chinese chess on R1-D: per-run data and local setup state
+/unitree_gpt6/r1d_chess/**/runs/
+/unitree_gpt6/r1d_chess/config/setup_status.json
+/unitree_gpt6/r1d_chess/setup/arm-calibration/r1_d/reports/

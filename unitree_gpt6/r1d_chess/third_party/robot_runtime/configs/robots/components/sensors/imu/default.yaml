@@ -1,0 +1,4 @@
+component_id: sensor.imu.default
+
+imus:
+- schema_key: pelvis

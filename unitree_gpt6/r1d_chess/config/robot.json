@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "robot": "R1-D",
+  "simulation_only": false,
+  "calibration_verified": false,
+  "calibration_evidence": null,
+  "geometry_source": "model_estimate",
+  "estimate_evidence": "Reference robot model estimate; method in docs/r1d_scene_parameters.md and setup/chess-scene-parameters.",
+  "frame": "waist_yaw_link",
+  "tcp_xyz_rpy": {
+    "left": [
+      0.0485,
+      -0.003,
+      0.02,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "right": [
+      0.0485,
+      0.003,
+      0.02,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "init_xyz_rpy": {
+    "left": [
+      0.3425862186772944,
+      0.3523755137669349,
+      0.009529036622339549,
+      -0.05071606668041993,
+      0.025024742249264875,
+      0.2596055927002578
+    ],
+    "right": [
+      0.28054074769012977,
+      -0.4176068533077204,
+      0.01963769684236195,
+      0.024337995124189382,
+      0.0033764004152698757,
+      -0.5024755215410877
+    ]
+  },
+  "scene": {
+    "surface_z": 0.012,
+    "uncertainty": 0.004,
+    "finger_end": 0.1432,
+    "half_width": 0.0585,
+    "half_thickness": 0.005,
+    "travel_clearance": 0.04,
+    "minimum_clearance": 0.0,
+    "xy_tolerance": 0.001,
+    "rotation_tolerance": 0.008,
+    "table_z": -0.008,
+    "board_centre_xy": [
+      0.302,
+      -0.0308
+    ],
+    "board_yaw": -0.0047,
+    "board_half_extent": [
+      0.1817,
+      0.1724
+    ]
+  },
+  "lift_height_m": 0.4391897583007813,
+  "board_release_z_m": 0.0741,
+  "tray_release_z_m": 0.1091,
+  "camera_mapping_verified": false,
+  "head_eye": "left",
+  "gripper_open_sign": 1,
+  "feedback_timeout_s": 0.15,
+  "arm_tracking_limit_rad": 0.2,
+  "head_waist_limit_rad": 0.1,
+  "lift_tolerance_m": 0.005,
+  "max_motor_temperature_c": 75,
+  "init_joint_rad": {
+    "left": [
+      -0.40635794401168823,
+      0.5399899482727051,
+      0.31583839654922485,
+      0.699302077293396,
+      -0.4038963317871094,
+      -0.0737515464425087,
+      -0.21213480830192566
+    ],
+    "right": [
+      -0.21372853219509125,
+      -0.6436215043067932,
+      -0.4631040394306183,
+      0.5892054438591003,
+      0.47807636857032776,
+      -0.05455685034394264,
+      0.12817656993865967
+    ]
+  },
+  "head_q_rad": [
+    0.62,
+    -0.0036209961399435997
+  ],
+  "waist_q_rad": [
+    0.028993088752031326
+  ],
+  "initial_pose_evidence": "config/chess_initial_pose.json",
+  "kinematic_model_urdf": "assets/models/r1d/r1d.urdf",
+  "kinematic_model_sha256": "39ad1a206c34c3deecd33745ccda0c0c94ece4195f674dfbaf950f567f08809c",
+  "kinematic_model_note": "TCP at the Dex1 flange (dex1_base_joint origin); init_xyz_rpy = FK of init_joint_rad on r1d.urdf.",
+  "arm_tracking_limit_note": "0.20 rad: with torque feedforward the largest instantaneous joint error is about 0.04 rad; without it static errors reach about 0.14 rad.",
+  "release_pitch_rad": 0.35,
+  "head_q_note": "Locked near the lowest head pitch (limit 0.628). Board centred in the image. Arrive with the last yaw move negative (yaw backlash)."
+}

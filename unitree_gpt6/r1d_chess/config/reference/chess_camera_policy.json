@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "head_camera": "cam_left_high",
+  "planning_camera": "cam_left_high",
+  "wrist_stream_by_physical_arm": {
+    "left": "cam_left_wrist",
+    "right": "cam_right_wrist"
+  },
+  "note": "R1-D candidate wiring, not inherited G1 reversed mapping. Confirm physical arms visually and set camera_mapping_verified in robot profile."
+}

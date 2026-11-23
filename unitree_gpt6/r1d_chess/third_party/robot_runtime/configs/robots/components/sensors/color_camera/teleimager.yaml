@@ -1,0 +1,12 @@
+component_id: sensor.color_camera.teleimager
+
+color_cameras:
+- schema_key: head_color
+  format: jpg
+  shape: [480, 1280]
+- schema_key: left_wrist_color
+  format: jpg
+  shape: [480, 640]
+- schema_key: right_wrist_color
+  format: jpg
+  shape: [480, 640]

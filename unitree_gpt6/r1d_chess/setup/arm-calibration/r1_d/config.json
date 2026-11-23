@@ -1,0 +1,10 @@
+{
+  "ip": "192.168.123.164",
+  "interface": "",
+  "transport": "dds",
+  "ssh_user": "unitree",
+  "remote_interface": "eth10",
+  "remote_python": "/home/unitree/agentlib_runtime/venv/bin/python",
+  "local_python": ".venv/bin/python",
+  "gravity_compensation": true
+}

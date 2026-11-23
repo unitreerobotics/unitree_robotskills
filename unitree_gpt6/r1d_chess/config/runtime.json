@@ -1,0 +1,30 @@
+{
+  "runtime_root": "third_party/robot_runtime",
+  "experiment": "configs/experiments/teleop/real/r1_a7_d/mobile_wbc/dex1_1_low_level_pico_xrobotoolkit.yaml",
+  "network_interface": "",
+  "camera_host": "192.168.123.164",
+  "camera_enabled": false,
+  "restore_motion_mode": "ai",
+  "model_urdf": "assets/models/r1d/r1d.urdf",
+  "joint_gains": {
+    "waist": {
+      "kp": [
+        150.0
+      ],
+      "kd": [
+        6.0
+      ]
+    },
+    "head": {
+      "kp": [
+        150.0,
+        40.0
+      ],
+      "kd": [
+        4.0,
+        0.4
+      ]
+    }
+  },
+  "hold_program": ""
+}

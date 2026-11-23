@@ -1,0 +1,139 @@
+{
+ "schema_version": 1,
+ "status": "model_estimate",
+ "accepted": {
+  "by": "operator",
+  "note": "Accepted with one failed gate: fold_rotation_mrad 2.76 > 2. Baseline not measured. Head pitch offset not estimated, bound about 7 mrad if the table is level. No quantitative arm check yet."
+ },
+ "camera": "head stereo, stream 640x480 per eye, valid columns 37-601",
+ "model": "cv2.fisheye",
+ "frame_chain": "waist_yaw_link -> head_pitch_joint -> head_yaw_joint -> left camera (OpenCV axes)",
+ "K_left": [
+  [
+   221.4332008497658,
+   0.0,
+   300.76940160514266
+  ],
+  [
+   0.0,
+   221.2282078457974,
+   228.81475319953563
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "D_left": [
+  0.014797761516086737,
+  0.018293103116225663,
+  -0.03121718320823131,
+  0.017768533718449518
+ ],
+ "K_right": [
+  [
+   223.05988329771716,
+   0.0,
+   324.03895578019177
+  ],
+  [
+   0.0,
+   223.0922903917303,
+   245.88610634745106
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "D_right": [
+  0.01431748018065742,
+  0.006773536500681685,
+  -0.014175462219563024,
+  0.010596332588889004
+ ],
+ "T_right_from_left": [
+  [
+   0.9998886544187515,
+   -0.0009435851042941529,
+   0.014892562298317188,
+   -0.05912057193927103
+  ],
+  [
+   0.001024312228753166,
+   0.9999848199195591,
+   -0.005413937098345046,
+   -0.0007544727908878136
+  ],
+  [
+   -0.014887227717621944,
+   0.005428588914051629,
+   0.9998744425543068,
+   0.0014196085989539948
+  ],
+  [
+   0,
+   0,
+   0,
+   1
+  ]
+ ],
+ "X_head_yaw_to_left_camera": [
+  [
+   0.014051504407738419,
+   -0.3275710989075375,
+   0.9447220386888344,
+   0.07707615617836062
+  ],
+  [
+   -0.9999012343533098,
+   -0.004341524039706085,
+   0.013366851077936892,
+   0.031344819519893166
+  ],
+  [
+   -0.0002770606547254917,
+   -0.9448165569725802,
+   -0.32759975108029715,
+   -0.023211354059577863
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "reference_head_q_rad": [
+  0.3258318305,
+  -0.0036209961
+ ],
+ "joint_scale_pitch_yaw": [
+  -0.0056193374417672125,
+  -0.016458026244913427
+ ],
+ "yaw_backlash_rad": -0.015409637592152803,
+ "joint_angle_model": "q_eff = ref + (q - ref) * (1 + scale); yaw also + backlash * last_yaw_direction",
+ "head_pitch_offset_rad": 0.0,
+ "gates": {
+  "heldout_rms_px<=1": 0.5541106193178206,
+  "heldout_p90_px<=1.5": 0.844877792778183,
+  "fold_position_mm<=2": 0.6554137521863302,
+  "fold_rotation_mrad<=2": 2.756629290040103,
+  "board_tilt_deg<=1": 0.46214958256657385,
+  "fold_board_centre_mm<=3": 1.018259574469958
+ },
+ "passed": {
+  "heldout_rms_px<=1": true,
+  "heldout_p90_px<=1.5": true,
+  "fold_position_mm<=2": true,
+  "fold_rotation_mrad<=2": false,
+  "board_tilt_deg<=1": true,
+  "fold_board_centre_mm<=3": true
+ },
+ "kinematic_model_sha256": "39ad1a206c34c3deecd33745ccda0c0c94ece4195f674dfbaf950f567f08809c",
+ "evidence": "Reference robot calibration data (not part of the package).",
+ "reference_head_q_note": "reference_head_q_rad is only the pivot of the joint scale model used in the fit; it is not the locked head pose (see robot.json head_q_rad). Fitted head pitch range 0.12-0.60; the locked 0.62 is a small extrapolation."
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "failure",
+  "actual_relative_offset_xy_m": [
+    0.0,
+    0.0
+  ],
+  "reason": "示例，请替换为实际原因：头部和执行手腕部两图无法确认source身份或夹口内存在邻子，当前检查点不放行。",
+  "source_identified": false,
+  "descent_alignment_verified": false,
+  "evidence": [
+    "REPLACE/current_checkpoint/cam_left_high.jpg",
+    "REPLACE/current_checkpoint/ACTOR_WRIST_FROM_CHECKPOINT_CAMERA_ORDER.jpg"
+  ]
+}

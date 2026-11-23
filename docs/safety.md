@@ -10,6 +10,8 @@ Exception: `g1d_r1d_navigation/src/navi_agent/` is a separate real-robot runtime
 
 Chinese chess (Xiangqi) includes real robot SDK interfaces, inverse kinematics, services and execution scripts; its configuration and capability boundaries must be checked against its [SKILL.md](../unitree_gpt6/g1d_chess/SKILL.md) and [runtime guide](../unitree_gpt6/g1d_chess/docs/runtime.md). The preview-mode limitations above do not apply to the chess entry point.
 
+Chinese chess on R1-D (`r1d_chess`) also drives a real robot through its own chess service and bundled robot runtime. Its `config/` ships the calibration results of a reference robot: complete the bring-up in its [setup guide](../unitree_gpt6/r1d_chess/setup/README.md) before any move, and check the capability boundaries in its [SKILL.md](../unitree_gpt6/r1d_chess/SKILL.md) and [operation manual](../unitree_gpt6/r1d_chess/docs/operation_manual.md).
+
 All model outputs and plans should be treated as inputs that still need to be verified. Real-robot interface integration must be designed separately; execution must not be started merely by removing the mode check.
 
 Painting provides a G1-D / Dex1 hardware backend, connection and feedback checks, URDF / IK compilation, execution stop and control authority management. Compilation and runs still require models, tools and on-site measurements that match the actual device.

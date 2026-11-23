@@ -1,0 +1,4 @@
+{
+  "context_id": "r1d_UNCALIBRATED_do_not_learn",
+  "description": "仅复用已核对兼容的棋盘/机身/腰姿/工具/模型及source-target姿态组；条件改变时更新context_id，旧JSONL保留。"
+}

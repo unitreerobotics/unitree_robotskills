@@ -1,0 +1,67 @@
+environment: real
+robot:
+  spec: configs/robots/compositions/r1_a7_d/dex1_1.yaml
+  drivers:
+  - component_id: body.r1_a7_d
+    type: unitree_sdk2.low_level
+    cmd_topic: rt/lowcmd
+  - component_id: end_effector.unitree.dex1_1.left
+    type: unitree_sdk2.dex1_1
+    wiring: internal
+    shared_motor_indices:
+    - 31
+  - component_id: end_effector.unitree.dex1_1.right
+    type: unitree_sdk2.dex1_1
+    wiring: internal
+    shared_motor_indices:
+    - 33
+  - component_id: base_group.r1_d_base
+    type: unitree_sdk2.cmd_vel
+    cmd_topic: rt/cmd_vel
+    move_state_topic: rt/state_vel
+    height_state_topic: rt/height_state
+    height_alarm_topic: rt/height_alarm
+  - component_id: sensor.color_camera.teleimager
+    type: teleimager.color_camera
+    request_bgr: true
+    streams:
+      head_color: head_camera
+      left_wrist_color: left_wrist_camera
+      right_wrist_color: right_wrist_camera
+  connections:
+    unitree_sdk2:
+      network_interface: enp4s0
+    teleimager:
+      host: 192.168.123.164
+runtime:
+  state_frequency: 30.0
+  control_mode: mobile_wbc
+  cmd_frequency: 250.0
+  cmd_timeout: 0.15
+  cmd_joint_velocity_limit: 20.0
+policy:
+  policy_id: teleop
+  hmi:
+    type: xrobotoolkit.xr
+    input_mode: controller
+  update_frequency: 30.0
+  retargeters:
+    dual_arm:
+      type: xr_body
+      wrist_tracking:
+        use_current_qpos_seed: true
+        filter_time_constant: 0.0
+    end_effector:
+      type: xr_gripper
+      rate: 2.5
+    base_group:
+      type: xr_base_lift
+      filter_time_constant: 0.1
+      forward_velocity_range: [-0.6, 0.6]
+      yaw_velocity_range: [-0.8, 0.8]
+      lift_velocity_range: [-1.0, 1.0]
+recording:
+  fps: 30
+  output_dir: ./data
+  dataset_name: r1_a7_d_mobile_pick_cube_dex1_1
+  task: pick up cube with R1-A7-D and Unitree Dex1 hands

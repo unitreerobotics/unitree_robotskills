@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "evidence": "neutral starting point for a new R1-D; replace after tuning",
+  "gravity": {
+    "enabled": true,
+    "at": "command",
+    "scale": {
+      "left": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "right": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "payload": {
+      "left": {
+        "mass_kg": 0.0,
+        "com_xyz_m": [
+          0.05,
+          0.0,
+          0.0
+        ]
+      },
+      "right": {
+        "mass_kg": 0.0,
+        "com_xyz_m": [
+          0.05,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "friction": {
+    "enabled": true,
+    "coulomb_nm": {
+      "left": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "velocity_epsilon_rad_s": 0.05,
+    "error_epsilon_rad": 0.01
+  },
+  "integral": {
+    "enabled": true,
+    "ki_nm_per_rad_s": [
+      100.0,
+      100.0,
+      75.0,
+      75.0,
+      40.0,
+      40.0,
+      40.0
+    ],
+    "limit_nm": [
+      6.0,
+      6.0,
+      4.0,
+      4.0,
+      2.5,
+      2.5,
+      2.5
+    ],
+    "error_window_rad": 0.25
+  },
+  "damping": {
+    "enabled": true,
+    "kd_nm_s_per_rad": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ]
+  },
+  "tau_limit_nm": [
+    12.0,
+    12.0,
+    8.0,
+    8.0,
+    3.0,
+    3.0,
+    3.0
+  ],
+  "tau_rate_nm_s": 30.0
+}

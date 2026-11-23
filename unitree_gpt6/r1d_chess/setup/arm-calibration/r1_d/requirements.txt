@@ -1,0 +1,6 @@
+# r1_d runs in the same Python environment as the chess package (see the package requirements.txt).
+# Its own needs: numpy, scipy (collision check of the exploration plans) and cyclonedds (DDS types of the
+# bundled unitree_sdk2_python in third_party/).
+cyclonedds==0.10.2
+numpy
+scipy

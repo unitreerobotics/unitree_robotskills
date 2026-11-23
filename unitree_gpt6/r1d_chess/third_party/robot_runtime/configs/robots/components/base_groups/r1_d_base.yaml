@@ -1,0 +1,6 @@
+# Project-internal alias for the current R1-D physical base.
+component_id: base_group.r1_d_base
+schema_key: base_lift
+# Homed column travel in metres; raw rt/height_state.z is in millimetres.
+height_limits: [0.0, 0.84]
+height_control_mode: velocity

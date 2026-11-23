@@ -10,6 +10,8 @@
 
 中国象棋包含真实机器人 SDK 接口、逆运动学、服务与执行脚本，须按其 [SKILL.zh.md](../unitree_gpt6/g1d_chess/SKILL.zh.md) 和 [运行说明](../unitree_gpt6/g1d_chess/docs/runtime.zh.md) 核对配置与能力边界。上述预览模式限制不适用于象棋入口。
 
+R1-D 中国象棋（`r1d_chess`）同样通过自带的象棋服务和内置的机器人运行时驱动真机。它的 `config/` 随包附带的是一台参考机器人的标定结果：走子之前先按其 [setup 说明](../unitree_gpt6/r1d_chess/setup/README.zh.md) 完成上线，并按其 [SKILL.zh.md](../unitree_gpt6/r1d_chess/SKILL.zh.md) 和 [操作手册](../unitree_gpt6/r1d_chess/docs/operation_manual.zh.md) 核对能力边界。
+
 所有模型输出和计划都应作为待验证输入。真机接口接入必须独立设计，不能仅删除模式检查就开始执行。
 
 绘画提供 G1-D / Dex1 硬件后端、连接与反馈检查、URDF / IK 编译、执行停止和控制权管理。编译与运行仍需要匹配实际设备的模型、工具和现场测量。

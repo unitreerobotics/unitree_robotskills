@@ -31,7 +31,7 @@
       <p><b>五子棋</b><br>G1-D</p>
     </td>
     <td align="center" colspan="2" width="33%">
-      <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="中国象棋" width="100%"></a>
+      <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="G1-D 中国象棋" width="100%"></a>
       <p><b>中国象棋</b><br>G1-D</p>
     </td>
   </tr>
@@ -41,9 +41,15 @@
       <p><b>五子棋</b><br>R1-D</p>
     </td>
     <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_chess_r1d.mp4"><img src="assets/preview_chess_r1d.gif" alt="R1-D 中国象棋" width="100%"></a>
+      <p><b>中国象棋</b><br>R1-D</p>
+    </td>
+    <td align="center" colspan="2" width="33%">
       <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="导航" width="100%"></a>
       <p><b>导航</b><br>R1-D</p>
     </td>
+  </tr>
+  <tr>
     <td align="center" colspan="2" width="33%">
       <a href="assets/demo_marker_sort.mp4"><img src="assets/preview_marker_sort.gif" alt="马克笔整理" width="100%"></a>
       <p><b>马克笔整理</b><br>R1-7a</p>
@@ -79,6 +85,7 @@ Agent 自主完成闭环：观察 → 推理 → 执行 → 验证。新增任�
 | [r1d_draw](unitree_gpt6/r1d_draw/README.zh.md) | R1-D | 规划笔画、测量纸面与材料点、离线编译轨迹，再通过有线 SSH 在机器人上执行绘制 | [SKILL.zh.md](unitree_gpt6/r1d_draw/SKILL.zh.md) |
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.zh.md) | G1-D | 通过四路相机识别 19×19 棋局，自主选点，右臂抓放棋子并归位；松爪前征得用户确认 | [SKILL.zh.md](unitree_gpt6/g1d_gomoku/SKILL.zh.md)、自主轮次 CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.zh.md) | G1-D | 识别中国象棋棋局，调用 Fairy-Stockfish 规划本轮走法，左右手抓放、处理吃子并复盘结果 | [SKILL.zh.md](unitree_gpt6/g1d_chess/SKILL.zh.md)、服务与单轮脚本 |
+| [r1d_chess](unitree_gpt6/r1d_chess/README.zh.md) | R1-D | 通过头部相机读中国象棋棋局，调用 Fairy-Stockfish 选着，生成抓放位姿并做完整预检，依据头图和腕图判断每个视觉门禁，用左右 Dex1 夹爪抓放、处理吃子并复盘结果；自带新机器人上线工具（相机检查、头部相机标定、机械臂精度标定、场景与棋盘标定） | [SKILL.zh.md](unitree_gpt6/r1d_chess/SKILL.zh.md)、象棋服务、机器人运行时与单轮命令 |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.zh.md) | R1-D / G1-D | 依据自然语言指令，通过 MCP 工具自主导航：观察画面、移动、移动中持续推理，并可记录与返回地点 | MCP 工具服务；另有确定性预览 CLI |
 | [r17a_marker_sort](unitree_gpt6/r17a_marker_sort/README.zh.md) | R1-7a | 定位笔盒，逐支抓起，按照颜色顺序放入对应的槽位 | [SKILL.md](unitree_gpt6/r17a_marker_sort/SKILL.zh.md) |
 
@@ -98,6 +105,7 @@ unitree_robotskills/
     ├── r1d_draw/                # R1-D 绘画：规划、测量、编译与机器人端执行
     ├── g1d_gomoku/              # 五子棋：自主轮次与硬件工具
     ├── g1d_chess/               # 中国象棋：服务、脚本与棋盘标注工具
+    ├── r1d_chess/               # R1-D 中国象棋：服务、机器人运行时、setup 与标定工具
     ├── g1d_r1d_navigation/      # 导航：MCP 运行时与预览骨架
     └── r17a_marker_sort/        # 马克笔整理：分步脚本、IK 与相机标定
 ```
@@ -119,7 +127,7 @@ unitree_robotskills/
 
 1. [unitree_sdk2_python](https://github.com/unitreerobotics/unitree_sdk2_python)：宇树机器人 DDS 通信（以 BSD 3-Clause 随五子棋技能内置）
 2. [xr_teleoperate](https://github.com/unitreerobotics/xr_teleoperate)：宇树机器人遥操作和图像服务
-3. [unitree_ros](https://github.com/unitreerobotics/unitree_ros)：G1 机器人描述
+3. [unitree_ros](https://github.com/unitreerobotics/unitree_ros)：G1 与 R1-D 机器人描述
 4. [Pinocchio](https://github.com/stack-of-tasks/pinocchio) 与 [CasADi](https://github.com/casadi/casadi)：运动学与逆运动学
 5. [Fairy-Stockfish](https://github.com/fairy-stockfish/Fairy-Stockfish)：中国象棋引擎（需单独安装）
 6. [DeepSeek-Harness](https://github.com/deepseek-ai/deepseek-harness) 与 [Model Context Protocol](https://modelcontextprotocol.io)：导航技能的 Agent 宿主与工具协议
@@ -127,6 +135,6 @@ unitree_robotskills/
 
 ### 6. 📝 许可证
 
-本项目采用 [Apache License 2.0](LICENSE)。随包内置的第三方组件保留其原始许可证，存放在组件旁（如 `unitree_gpt6/g1d_gomoku/models/g1/licenses/` 与 `unitree_gpt6/g1d_gomoku/src/unitree_sdk2py/LICENSE`）。第三方模型、SDK、素材与数据遵守各自的许可。
+本项目采用 [Apache License 2.0](LICENSE)。随包内置的第三方组件保留其原始许可证，存放在组件旁（如 `unitree_gpt6/g1d_gomoku/models/g1/licenses/`、`unitree_gpt6/g1d_gomoku/src/unitree_sdk2py/LICENSE` 与 `unitree_gpt6/r1d_chess/third_party/robot_runtime/LICENSE`）。第三方模型、SDK、素材与数据遵守各自的许可。
 
 我们的目标是让 AI Agent 具备在物理世界中行动的能力，并以机器人技能为单位逐步实现。

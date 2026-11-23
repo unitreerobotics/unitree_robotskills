@@ -1,0 +1,51 @@
+component_id: body.r1_a7_d
+motor_slots: 35
+temperature_thresholds:
+  casing_temp: {trigger: 85.0, release: 80.0}
+  winding_temp: {trigger: 120.0, release: 115.0}
+joint_groups:
+- schema_key: waist
+  joint_names:
+  - waist_yaw_joint
+  indices: [13]
+  kp: [50.0]
+  kd: [3.0]
+  qpos_min: [-2.618]
+  qpos_max: [2.618]
+- schema_key: left_arm
+  joint_names:
+  - left_shoulder_pitch_joint
+  - left_shoulder_roll_joint
+  - left_shoulder_yaw_joint
+  - left_elbow_joint
+  - left_wrist_roll_joint
+  - left_wrist_pitch_joint
+  - left_wrist_yaw_joint
+  indices: [15, 16, 17, 18, 19, 20, 21]
+  kp: [50.0, 50.0, 40.0, 40.0, 30.0, 30.0, 30.0]
+  kd: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+  qpos_min: [-3.1416, -0.22689, -1.9199, -0.97564, -1.9199, -1.6144, -1.6144]
+  qpos_max: [2.0944, 2.4784, 1.9199, 2.1852, 1.9199, 1.6144, 1.6144]
+- schema_key: right_arm
+  joint_names:
+  - right_shoulder_pitch_joint
+  - right_shoulder_roll_joint
+  - right_shoulder_yaw_joint
+  - right_elbow_joint
+  - right_wrist_roll_joint
+  - right_wrist_pitch_joint
+  - right_wrist_yaw_joint
+  indices: [22, 23, 24, 25, 26, 27, 28]
+  kp: [50.0, 50.0, 40.0, 40.0, 30.0, 30.0, 30.0]
+  kd: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+  qpos_min: [-3.1416, -2.47849, -1.9199, -0.97564, -1.9199, -1.6144, -1.6144]
+  qpos_max: [2.0944, 0.2268, 1.9199, 2.1852, 1.9199, 1.6144, 1.6144]
+- schema_key: head
+  joint_names:
+  - head_pitch_joint
+  - head_yaw_joint
+  indices: [29, 30]
+  kp: [50.0, 10.0]
+  kd: [2.0, 0.1]
+  qpos_min: [-0.62832, -2.0071]
+  qpos_max: [0.62832, 2.0071]

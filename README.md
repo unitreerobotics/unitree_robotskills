@@ -31,7 +31,7 @@
       <p><b>Gomoku</b><br>G1-D</p>
     </td>
     <td align="center" colspan="2" width="33%">
-      <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="Chinese Chess" width="100%"></a>
+      <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="Chinese Chess on G1-D" width="100%"></a>
       <p><b>Chinese Chess</b><br>G1-D</p>
     </td>
   </tr>
@@ -41,9 +41,15 @@
       <p><b>Gomoku</b><br>R1-D</p>
     </td>
     <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_chess_r1d.mp4"><img src="assets/preview_chess_r1d.gif" alt="Chinese Chess on R1-D" width="100%"></a>
+      <p><b>Chinese Chess</b><br>R1-D</p>
+    </td>
+    <td align="center" colspan="2" width="33%">
       <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="Navigation" width="100%"></a>
       <p><b>Navigation</b><br>R1-D</p>
     </td>
+  </tr>
+  <tr>
     <td align="center" colspan="2" width="33%">
       <a href="assets/demo_marker_sort.mp4"><img src="assets/preview_marker_sort.gif" alt="Marker Sorting" width="100%"></a>
       <p><b>Marker Sorting</b><br>R1-7a</p>
@@ -77,6 +83,7 @@ The agent closes the loop autonomously: observe → reason → act → verify. A
 | [r1d_draw](unitree_gpt6/r1d_draw/README.md) | R1-D | Plans strokes, measures the paper and material points, compiles trajectories offline, then paints through a controller run on the robot over wired SSH | [SKILL.md](unitree_gpt6/r1d_draw/SKILL.md) |
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.md) | G1-D | Recognizes the 19×19 board from four cameras, selects a move, picks and places the stone with the right arm and returns to home; asks for user confirmation before releasing the gripper | [SKILL.md](unitree_gpt6/g1d_gomoku/SKILL.md), autonomous-round CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.md) | G1-D | Recognizes the Chinese chess board, plans the move for the current round with Fairy-Stockfish, picks and places with either hand, handles captures and reviews the result | [SKILL.md](unitree_gpt6/g1d_chess/SKILL.md), service and single-round scripts |
+| [r1d_chess](unitree_gpt6/r1d_chess/README.md) | R1-D | Reads the Chinese chess board from the head camera, selects the move with Fairy-Stockfish, generates grasp and release poses, runs a full preflight, judges every visual gate from the head and wrist images, picks and places with either Dex1 gripper, handles captures and reviews the result; includes bring-up tools for a new robot (camera check, head camera calibration, arm accuracy calibration, scene and board calibration) | [SKILL.md](unitree_gpt6/r1d_chess/SKILL.md), chess service, robot runtime and single-round commands |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.md) | R1-D / G1-D | Navigates autonomously from natural-language instructions through MCP tools: observes, moves, keeps reasoning while in motion, and records and returns to places | MCP tool server; plus a deterministic preview CLI |
 | [r17a_marker_sort](unitree_gpt6/r17a_marker_sort/README.md) | R1-7a | Locates the pen box, picks up the markers one by one and puts them into their slots in colour-number order | [SKILL.md](unitree_gpt6/r17a_marker_sort/SKILL.md) |
 
@@ -95,6 +102,7 @@ unitree_robotskills/
     ├── r1d_draw/                # R1-D painting: planning, measurement, compilation and on-robot execution
     ├── g1d_gomoku/              # Gomoku: autonomous rounds and hardware tools
     ├── g1d_chess/               # Chinese chess: service, scripts and board annotation tools
+    ├── r1d_chess/               # Chinese chess on R1-D: service, robot runtime, setup and calibration tools
     ├── g1d_r1d_navigation/      # navigation: MCP runtime and preview skeleton
     └── r17a_marker_sort/        # marker sorting: step scripts, IK and camera calibration
 ```
@@ -115,7 +123,7 @@ This project builds on the following open-source projects. Please visit each pro
 
 1. [unitree_sdk2_python](https://github.com/unitreerobotics/unitree_sdk2_python): DDS communication with Unitree robots (bundled with the Gomoku skill under BSD 3-Clause)
 2. [xr_teleoperate](https://github.com/unitreerobotics/xr_teleoperate): teleoperation and image service for Unitree robots
-3. [unitree_ros](https://github.com/unitreerobotics/unitree_ros): G1 robot description
+3. [unitree_ros](https://github.com/unitreerobotics/unitree_ros): G1 and R1-D robot descriptions
 4. [Pinocchio](https://github.com/stack-of-tasks/pinocchio) and [CasADi](https://github.com/casadi/casadi): kinematics and inverse kinematics
 5. [Fairy-Stockfish](https://github.com/fairy-stockfish/Fairy-Stockfish): Chinese chess engine (installed separately)
 6. [DeepSeek-Harness](https://github.com/deepseek-ai/deepseek-harness) and the [Model Context Protocol](https://modelcontextprotocol.io): agent host and tool protocol for the navigation skill
@@ -123,6 +131,6 @@ This project builds on the following open-source projects. Please visit each pro
 
 ### 6. 📝 License
 
-This project is licensed under the [Apache License 2.0](LICENSE). Bundled third-party components keep their original licenses, stored next to the components (for example `unitree_gpt6/g1d_gomoku/models/g1/licenses/` and `unitree_gpt6/g1d_gomoku/src/unitree_sdk2py/LICENSE`). Third-party models, SDKs, assets and data are governed by their own licenses.
+This project is licensed under the [Apache License 2.0](LICENSE). Bundled third-party components keep their original licenses, stored next to the components (for example `unitree_gpt6/g1d_gomoku/models/g1/licenses/`, `unitree_gpt6/g1d_gomoku/src/unitree_sdk2py/LICENSE` and `unitree_gpt6/r1d_chess/third_party/robot_runtime/LICENSE`). Third-party models, SDKs, assets and data are governed by their own licenses.
 
 Our goal is to give AI agents the ability to act in the physical world, achieved step by step, one robot skill at a time.

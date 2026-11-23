@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "evidence": "Reference robot: gravity and friction from the fitted arm dynamics URDF (setup/arm-calibration); gravity scales are 1; integral, damping and limits from Runtime-path tuning (setup/joint-tracking).",
+  "gravity": {
+    "enabled": true,
+    "at": "command",
+    "scale": {
+      "left": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "right": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "payload": {
+      "left": {
+        "mass_kg": 0.0,
+        "com_xyz_m": [
+          0.05,
+          0.0,
+          0.0
+        ]
+      },
+      "right": {
+        "mass_kg": 0.0,
+        "com_xyz_m": [
+          0.05,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "friction": {
+    "enabled": true,
+    "coulomb_nm": {
+      "left": [
+        0.564,
+        0.796,
+        0.491,
+        0.384,
+        0.224,
+        1.196,
+        0.114
+      ],
+      "right": [
+        1.017,
+        0.692,
+        0.868,
+        0.427,
+        0.202,
+        0.292,
+        0.182
+      ]
+    },
+    "velocity_epsilon_rad_s": 0.05,
+    "error_epsilon_rad": 0.01,
+    "load_coefficient": {
+      "left": [
+        0.103,
+        0.071,
+        0.004,
+        0.012,
+        0.005,
+        0.0,
+        0.236
+      ],
+      "right": [
+        0.107,
+        0.079,
+        0.015,
+        0.021,
+        0.066,
+        0.438,
+        0.194
+      ]
+    }
+  },
+  "integral": {
+    "enabled": true,
+    "ki_nm_per_rad_s": [
+      100.0,
+      100.0,
+      75.0,
+      75.0,
+      40.0,
+      40.0,
+      40.0
+    ],
+    "limit_nm": [
+      6.0,
+      6.0,
+      4.0,
+      4.0,
+      2.5,
+      2.5,
+      2.5
+    ],
+    "error_window_rad": 0.25
+  },
+  "tau_limit_nm": [
+    12.0,
+    12.0,
+    8.0,
+    8.0,
+    3.0,
+    3.0,
+    3.0
+  ],
+  "tau_rate_nm_s": 30.0,
+  "model_urdf": "assets/models/r1d/r1d_arm_dynamics_reference.urdf",
+  "damping": {
+    "enabled": true,
+    "kd_nm_s_per_rad": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "adjust_pitch",
+  "actual_relative_offset_xy_m": [
+    0.0,
+    0.0
+  ],
+  "reason": "示例必须替换：低位闭爪前，头部和执行手腕两图显示棋子大部分在两指尖端外、两指前端没有包住棋子侧壁；左右对位合适。按固定步长（checkpoint 的 low_pitch_step_rad，默认 0.1 rad）减小向下倾角，TCP 位置/yaw/roll 不变，之后复拍。",
+  "source_identified": true,
+  "descent_alignment_verified": false,
+  "evidence": [
+    "REPLACE/current_preclose/cam_left_high.jpg",
+    "REPLACE/current_preclose/ACTOR_WRIST_FROM_CHECKPOINT_CAMERA_ORDER.jpg"
+  ]
+}
