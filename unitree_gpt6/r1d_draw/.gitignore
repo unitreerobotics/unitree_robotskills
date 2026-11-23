@@ -1,0 +1,8 @@
+__pycache__/
+.venv/
+local/
+runtime/
+captures/
+my-task/
+ready/
+offline-demo/

@@ -1,0 +1,45 @@
+{
+  "device": {
+    "robot_id": "r1d",
+    "host": "192.168.123.161",
+    "user": "unitree",
+    "interface": "eth0",
+    "mac": "00:00:00:00:00:00",
+    "source_ip": null,
+    "password_env": "R1D_SSH_PASSWORD"
+  },
+  "cameras": {
+    "head": {
+      "host": "192.168.123.161",
+      "interface": "eth0",
+      "mac": "00:00:00:00:00:00",
+      "kind": "rtsp",
+      "source": "rtsp://127.0.0.1:8551/video"
+    },
+    "left_wrist": {
+      "host": "192.168.123.164",
+      "interface": "eth10",
+      "mac": "00:00:00:00:00:00",
+      "kind": "v4l2",
+      "source": "/dev/v4l/by-id/usb-CAMERA-video-index0",
+      "size": "1920x1080"
+    },
+    "right_wrist": {
+      "host": "192.168.123.164",
+      "interface": "eth10",
+      "mac": "00:00:00:00:00:00",
+      "kind": "v4l2",
+      "source": "/dev/v4l/by-id/usb-CAMERA-video-index0",
+      "size": "1920x1080"
+    }
+  },
+  "model": {
+    "urdf": "models/r1d.urdf",
+    "mesh_dirs": [
+      "models/meshes"
+    ]
+  },
+  "storage": {
+    "directory": "../runtime"
+  }
+}

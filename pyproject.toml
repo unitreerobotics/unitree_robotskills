@@ -58,6 +58,13 @@ draw = [
     "Pygments==2.21.0",
 ]
 
+r1d-draw = [
+    "numpy>=1.26",
+    "paramiko>=3.4",
+    "scipy>=1.13",
+    "pin>=3,<5",
+]
+
 chess = [
     "numpy==1.26.4",
     "scipy==1.15.2",
@@ -86,6 +93,7 @@ gomoku-hardware = [
 
 [project.scripts]
 robot-paint-execute = "unitree_gpt6.g1d_draw.src.cli:main"
+r1d-draw = "unitree_gpt6.r1d_draw.src.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["unitree_gpt6*"]
@@ -98,6 +106,7 @@ exclude = ["*.tests", "*.tests.*", "*.test", "*.test.*"]
     "assets/golden_gate_bridge/*", "scripts/*.sh",
 ]
 
+"unitree_gpt6.r1d_draw" = ["README*.md", "SKILL*.md", "config/*.json", "scripts/*"]
 "unitree_gpt6.g1d_gomoku.src.unitree_sdk2py" = ["LICENSE", "VENDORED.md", "manifest.json", "utils/lib/*.so"]
 "unitree_gpt6.g1d_chess" = ["SKILL*.md"]
 "unitree_gpt6.g1d_gomoku" = [

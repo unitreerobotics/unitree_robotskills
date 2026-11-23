@@ -1,0 +1,5 @@
+# Python 3.10+. Install from the repository root.
+numpy>=1.26
+paramiko>=3.4
+scipy>=1.13
+pin>=3,<5
