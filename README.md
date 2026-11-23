@@ -10,7 +10,7 @@
   <p align="center">
     <img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="License">
     <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python">
-    <img src="https://img.shields.io/badge/Robots-G1--D%20%7C%20R1--D-black" alt="Robots">
+    <img src="https://img.shields.io/badge/Robots-G1--D%20%7C%20R1--D%20%7C%20R1--7a-black" alt="Robots">
   </p>
 </div>
 
@@ -36,13 +36,17 @@
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="3" width="50%">
-      <a href="assets/demo_gomuku_r1d.mp4"><img src="assets/preview_gomoku_r1d.gif" alt="Gomoku on R1-D" width="66%"></a>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_gomuku_r1d.mp4"><img src="assets/preview_gomoku_r1d.gif" alt="Gomoku on R1-D" width="100%"></a>
       <p><b>Gomoku</b><br>R1-D</p>
     </td>
-    <td align="center" colspan="3" width="50%">
-      <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="Navigation" width="66%"></a>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="Navigation" width="100%"></a>
       <p><b>Navigation</b><br>R1-D</p>
+    </td>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_marker_sort.mp4"><img src="assets/preview_marker_sort.gif" alt="Marker Sorting" width="100%"></a>
+      <p><b>Marker Sorting</b><br>R1-7a</p>
     </td>
   </tr>
 </table>
@@ -73,6 +77,7 @@ The agent closes the loop autonomously: observe → reason → act → verify. A
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.md) | G1-D | Recognizes the 19×19 board from four cameras, selects a move, picks and places the stone with the right arm and returns to home; asks for user confirmation before releasing the gripper | [SKILL.md](unitree_gpt6/g1d_gomoku/SKILL.md), autonomous-round CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.md) | G1-D | Recognizes the Chinese chess board, plans the move for the current round with Fairy-Stockfish, picks and places with either hand, handles captures and reviews the result | [SKILL.md](unitree_gpt6/g1d_chess/SKILL.md), service and single-round scripts |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.md) | R1-D / G1-D | Navigates autonomously from natural-language instructions through MCP tools: observes, moves, keeps reasoning while in motion, and records and returns to places | MCP tool server; plus a deterministic preview CLI |
+| [r17a_marker_sort](unitree_gpt6/r17a_marker_sort/README.md) | R1-7a | Locates the pen box, picks up the markers one by one and puts them into their slots in colour-number order | [SKILL.md](unitree_gpt6/r17a_marker_sort/SKILL.md) |
 
 ### 3. 🗺️ Repository Layout
 
@@ -87,10 +92,9 @@ unitree_robotskills/
 └── unitree_gpt6/
     ├── g1d_draw/                # painting: planning, measurement, compilation and SDK execution
     ├── g1d_gomoku/              # Gomoku: autonomous rounds and hardware tools
-    │   └── models/              # G1 model resources and licenses used by Gomoku
     ├── g1d_chess/               # Chinese chess: service, scripts and board annotation tools
-    └── g1d_r1d_navigation/      # navigation: MCP runtime and preview skeleton
-        └── common/              # preview input/output, configuration and CLI
+    ├── g1d_r1d_navigation/      # navigation: MCP runtime and preview skeleton
+    └── r17a_marker_sort/        # marker sorting: step scripts, IK and camera calibration
 ```
 
 ### 4. ⚠️ Safety

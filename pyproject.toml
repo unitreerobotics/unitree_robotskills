@@ -109,8 +109,8 @@ exclude = ["*.tests", "*.tests.*", "*.test", "*.test.*"]
 ]
 
 [tool.ruff]
-# g1d_chess keeps its original source layout and is checked by its own tooling.
-extend-exclude = ["unitree_gpt6/g1d_gomoku/src/unitree_sdk2py", "unitree_gpt6/g1d_chess"]
+# g1d_chess and r17a_marker_sort keep their original source layout.
+extend-exclude = ["unitree_gpt6/g1d_gomoku/src/unitree_sdk2py", "unitree_gpt6/g1d_chess", "unitree_gpt6/r17a_marker_sort"]
 target-version = "py310"
 line-length = 100
 

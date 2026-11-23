@@ -10,7 +10,7 @@
   <p align="center">
     <img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="License">
     <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python">
-    <img src="https://img.shields.io/badge/Robots-G1--D%20%7C%20R1--D-black" alt="Robots">
+    <img src="https://img.shields.io/badge/Robots-G1--D%20%7C%20R1--D%20%7C%20R1--7a-black" alt="Robots">
   </p>
 </div>
 
@@ -36,13 +36,17 @@
     </td>
   </tr>
   <tr>
-    <td align="center" colspan="3" width="50%">
-      <a href="assets/demo_gomuku_r1d.mp4"><img src="assets/preview_gomoku_r1d.gif" alt="R1-D 五子棋" width="66%"></a>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_gomuku_r1d.mp4"><img src="assets/preview_gomoku_r1d.gif" alt="R1-D 五子棋" width="100%"></a>
       <p><b>五子棋</b><br>R1-D</p>
     </td>
-    <td align="center" colspan="3" width="50%">
-      <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="导航" width="66%"></a>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_navigation.mp4"><img src="assets/preview_navigation.gif" alt="导航" width="100%"></a>
       <p><b>导航</b><br>R1-D</p>
+    </td>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_marker_sort.mp4"><img src="assets/preview_marker_sort.gif" alt="马克笔整理" width="100%"></a>
+      <p><b>马克笔整理</b><br>R1-7a</p>
     </td>
   </tr>
 </table>
@@ -75,6 +79,7 @@ Agent 自主完成闭环：观察 → 推理 → 执行 → 验证。新增任�
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.zh.md) | G1-D | 通过四路相机识别 19×19 棋局，自主选点，右臂抓放棋子并归位；松爪前征得用户确认 | [SKILL.zh.md](unitree_gpt6/g1d_gomoku/SKILL.zh.md)、自主轮次 CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.zh.md) | G1-D | 识别中国象棋棋局，调用 Fairy-Stockfish 规划本轮走法，左右手抓放、处理吃子并复盘结果 | [SKILL.zh.md](unitree_gpt6/g1d_chess/SKILL.zh.md)、服务与单轮脚本 |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.zh.md) | R1-D / G1-D | 依据自然语言指令，通过 MCP 工具自主导航：观察画面、移动、移动中持续推理，并可记录与返回地点 | MCP 工具服务；另有确定性预览 CLI |
+| [r17a_marker_sort](unitree_gpt6/r17a_marker_sort/README.zh.md) | R1-7a | 定位笔盒，逐支抓起，按照颜色顺序放入对应的槽位 | [SKILL.md](unitree_gpt6/r17a_marker_sort/SKILL.zh.md) |
 
 
 ### 3. 🗺️ 目录结构
@@ -90,10 +95,9 @@ unitree_robotskills/
 └── unitree_gpt6/
     ├── g1d_draw/                # 绘画：规划、测量、编译与 SDK 执行
     ├── g1d_gomoku/              # 五子棋：自主轮次与硬件工具
-    │   └── models/              # 五子棋使用的 G1 模型与许可
     ├── g1d_chess/               # 中国象棋：服务、脚本与棋盘标注工具
-    └── g1d_r1d_navigation/      # 导航：MCP 运行时与预览骨架
-        └── common/              # 预览输入输出、配置与 CLI
+    ├── g1d_r1d_navigation/      # 导航：MCP 运行时与预览骨架
+    └── r17a_marker_sort/        # 马克笔整理：分步脚本、IK 与相机标定
 ```
 
 

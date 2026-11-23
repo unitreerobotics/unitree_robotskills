@@ -1,0 +1,8 @@
+r1-7a_sdk
+src/calib.json
+src/calib_plan.json
+src/calib_cover.png
+src/cal[0-9]*/
+src/runs/
+__pycache__/
+runs/
