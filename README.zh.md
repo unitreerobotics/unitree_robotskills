@@ -3,7 +3,7 @@
   <a href="https://www.unitree.com/" target="_blank">
     <img src="https://www.unitree.com/images/0079f8938336436e955ea3a98c4e1e59.svg" alt="Unitree LOGO" width="15%">
   </a>
-  <p align="center"><b>宇树机器人 · GPT‑6 Astra · 物理世界通用技能</b></p>
+  <p align="center"><b>宇树机器人 · 面向 Agent 的物理世界通用技能</b></p>
   <p align="center">
     <a href="README.md">English</a> | <a>中文</a>
   </p>
@@ -14,7 +14,7 @@
   </p>
 </div>
 
-**Unitree RobotSkills** 将宇树机器人与最前沿的 AI（GPT‑6 Astra、Claude Opus 等）相结合，构建能够看图、推理并调用工具的 Agent。AI 模型获得一组机器人技能后，即可通过机器人相机观察现场、自主决策，并在物理世界中执行相应任务；无需为每个技能单独训练专用模型，初步实现仅凭语言指令即可控制机器人完成任务。
+**Unitree RobotSkills** 为宇树机器人提供可复用的 Agent 技能。Codex、Claude Code 等 Agent 可以按各技能的说明接入，使用任务所需的图像输入、Shell 或 MCP 工具。安装步骤和运行环境要求见各技能的 README。
 
 > **宇树机器人 × 最前沿 AI → 迈入物理 AI 时代**：一个通用 AI Agent 为多款宇树机器人赋能，把对话中的智能变成物理世界中的行动。
 
@@ -63,7 +63,7 @@
 
 ### 1. 项目价值
 
-机器人技能通常一次只解决一个任务：专用感知模型、手写状态机、固定动作脚本。RobotSkills 采用另一种方式：**由 GPT‑6 Astra 通用 Agent 担任所有任务的大脑**，每个技能仅向 Agent 提供完成任务所需的能力：
+RobotSkills 为 Agent 提供每项任务所需的操作说明、现场观测和工具。
 
 - **视觉感知**：机器人相机的原始画面，由 Agent 直接读取并理解。
 - **运动控制**：基于 Unitree SDK2 / DDS、带边界约束的机器人工具（手臂位姿、夹爪、底盘运动、归位）。
@@ -72,7 +72,7 @@
 Agent 自主完成闭环：观察 → 推理 → 执行 → 验证。新增任务只需编写新技能，无需训练新模型；支持新机器人只需补充相应的工具。
 
 <p align="center">
-  <img src="assets/architecture.zh.png" alt="RobotSkills 架构：宇树机器人借助 GPT-6 Astra 实现绘画、五子棋、中国象棋与导航" width="100%">
+  <img src="assets/architecture.zh.png" alt="RobotSkills 架构图，展示 Agent 如何使用绘画、五子棋、中国象棋和导航技能" width="100%">
 
 </p>
 

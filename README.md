@@ -3,7 +3,7 @@
   <a href="https://www.unitree.com/" target="_blank">
     <img src="https://www.unitree.com/images/0079f8938336436e955ea3a98c4e1e59.svg" alt="Unitree LOGO" width="15%">
   </a>
-  <p align="center"><b>Unitree Robots · GPT‑6 Astra · General Skills for the Physical World</b></p>
+  <p align="center"><b>Unitree Robots · General Skills for Agents in the Physical World</b></p>
   <p align="center">
     <a>English</a> | <a href="README.zh.md">中文</a>
   </p>
@@ -14,7 +14,7 @@
   </p>
 </div>
 
-**Unitree RobotSkills** combines Unitree robots with frontier AI (GPT‑6 Astra, Claude Opus and others) to build agents that can read images, reason and call tools. Once given a set of robot skills, an AI model observes the scene through the robot's cameras, makes decisions autonomously and carries out tasks in the physical world. No dedicated model needs to be trained for each skill, which is a first step towards controlling robots through language instructions alone.
+**Unitree RobotSkills** provides reusable Agent skills for Unitree robots. Agents such as Codex and Claude Code can use these skills with the capabilities each workflow requires, such as image input, shell access or MCP tools. See each skill's README for its setup and runtime requirements.
 
 > **Unitree Robots × Frontier AI → Entering the Era of Physical AI**: one general AI agent empowers multiple Unitree robots, turning intelligence in conversation into action in the physical world.
 
@@ -63,7 +63,7 @@ Click a preview to watch the full video. The demos are sped up, and part of the 
 
 ### 1. Why It Matters
 
-Robot skills are usually built one task at a time: a dedicated perception model, a hand-written state machine and a fixed motion script. RobotSkills takes a different approach: **the GPT‑6 Astra general agent serves as the brain for every task**, and each skill provides the agent only with the capabilities the task requires:
+RobotSkills gives an Agent the instructions, observations and tools it needs for each task.
 
 - **Visual perception**: raw camera frames from the robot, read and interpreted directly by the agent.
 - **Motion control**: bounded robot tools built on Unitree SDK2 / DDS (arm poses, gripper, base motion, return to home).
@@ -72,7 +72,7 @@ Robot skills are usually built one task at a time: a dedicated perception model,
 The agent closes the loop autonomously: observe → reason → act → verify. A new task only requires a new skill, not a new model; supporting a new robot only requires adding its tools.
 
 <p align="center">
-  <img src="assets/architecture.png" alt="RobotSkills architecture: Unitree robots use GPT-6 Astra for painting, Gomoku, Chinese chess and navigation" width="100%">
+  <img src="assets/architecture.png" alt="RobotSkills architecture showing the General-Purpose Agent Harness and skills for painting, Gomoku, Chinese chess and navigation" width="100%">
 </p>
 
 ### 2. Skills

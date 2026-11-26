@@ -97,3 +97,5 @@ Run every tool from `src/` as `python3 -m <dir>.<tool>`.
 - A stop or disconnect that releases torque, or restarting the control program, drops the arm. Support the arm by hand before doing any of them.
 - Run motion scripts in the foreground one step at a time and look at the image between steps. Path checks block with `assert`.
 - Do not strain for a pen that is out of reach: a grasp right at a joint limit ended in a motor error, the controller releasing torque and the arm dropping.
+
+In real-robot trials, the R1-7a sorted multiple markers in each run. The average time and cost for a full run were 23.8 minutes and $5.93 with Claude Fable 5.2, 43.6 minutes and $1.42 with GPT-6.1 Terra, and 20.6 minutes and $2.44 with DeepSeek 4.1 Flash via DeepSeek-Harness. The reported times and costs are for reference only. Actual costs may vary with the API provider, any API gateway used, and their pricing.
