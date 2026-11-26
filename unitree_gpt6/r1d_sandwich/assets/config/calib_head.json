@@ -1,0 +1,128 @@
+{
+ "image_size": [
+  544,
+  448
+ ],
+ "intrinsics_calibrated": true,
+ "extrinsics_calibrated": true,
+ "left": {
+  "K": [
+   [
+    133.0,
+    0.0,
+    265.6
+   ],
+   [
+    0.0,
+    133.0,
+    208.8
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "D": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "right": {
+  "K": [
+   [
+    133.0,
+    0.0,
+    265.6
+   ],
+   [
+    0.0,
+    133.0,
+    208.8
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "D": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "R": [
+  [
+   1.0,
+   0,
+   0
+  ],
+  [
+   0,
+   1.0,
+   0
+  ],
+  [
+   0,
+   0,
+   1.0
+  ]
+ ],
+ "T": [
+  -0.0602,
+  0.0,
+  0.0
+ ],
+ "parent_link": "head_yaw_Link",
+ "T_parent_cam": [
+  [
+   0.10809406342198932,
+   -0.29282742277089396,
+   0.9500356698178645,
+   0.08003050277117518
+  ],
+  [
+   -0.9941396662652835,
+   -0.03319798894938577,
+   0.10287962620299057,
+   -0.020337045582752088
+  ],
+  [
+   0.0014132978714810405,
+   -0.9555888205724641,
+   -0.2946998618697568,
+   -0.04015311273482769
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "joint_offsets": {},
+ "multi_fit": {
+  "rms_px": 2.6456532722661645,
+  "views": 5,
+  "plane_err_mean_m": 0.01228387896295271,
+  "date": "2026-11-17 14:45"
+ },
+ "notes": "11-18 evening: teleimager rectifies the raw fisheye eyes with the EEPROM intrinsics + a stereo R/T from stereoCalibrate over chessboards at 0.6 and 1.0 m (EEPROM intrinsics fixed, rms 0.21 px): f 133.0, cx 265.6, cy 208.8, baseline 60.2 mm (stereo depth 0.603 / 0.990 m vs tape ~0.6 / ~1.0 m). The rectified frame rotated by ~2.8 deg: T_parent_cam (11-17 board fit) is STALE -> recalibrate with calib_board_all.py head. 11-18: head images now come from tools/head_rectify_164.py (raw fisheye MJPG, factory EEPROM intrinsics, right eye +4.3 px): K f 136.4 cx 287.6 cy 208.8, already row-aligned. T_parent_cam kept from the 11-17 board fit of the .161 H.264 rectified stream (calib_head_h264_161.json): re-check with calib_board_all.py head. Previous notes: 11-17: multi-pose board fit; table-plane intersection error 1.2 ",
+ "board_fit": {
+  "reproj_px": 0.19031962752342224,
+  "head_q": [
+   0.4626,
+   -0.0078
+  ],
+  "lift": 0.5803,
+  "board_from": "mean",
+  "change_vs_nominal_deg": 7.339500732897004,
+  "date": "2026-11-18 20:46"
+ }
+}

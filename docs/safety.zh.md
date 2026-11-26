@@ -12,6 +12,8 @@
 
 R1-D 中国象棋（`r1d_chess`）同样通过自带的象棋服务和内置的机器人运行时驱动真机。它的 `config/` 随包附带的是一台参考机器人的标定结果：走子之前先按其 [setup 说明](../unitree_gpt6/r1d_chess/setup/README.zh.md) 完成上线，并按其 [SKILL.zh.md](../unitree_gpt6/r1d_chess/SKILL.zh.md) 和 [操作手册](../unitree_gpt6/r1d_chess/docs/operation_manual.zh.md) 核对能力边界。
 
+R1-D 三明治（`r1d_sandwich`）通过本机 EEF 服务驱动真机。服务以固定升降 `0.522` m 启动，每一次运动都需要用户明确授权。阶段之间只用关节空间 `home`，夹爪开度至少 `0.1` 才能搬运，烤面包机挪动后要重新核对障碍盒。服务会检查 IK、碰撞、桌面和已登记障碍约束，但不能识别人、食物、松散物体，也不能确认物体是否附着。见其 [SKILL.zh.md](../unitree_gpt6/r1d_sandwich/SKILL.zh.md) 与 [README](../unitree_gpt6/r1d_sandwich/README.zh.md)。
+
 所有模型输出和计划都应作为待验证输入。真机接口接入必须独立设计，不能仅删除模式检查就开始执行。
 
 绘画提供 G1-D / Dex1 硬件后端、连接与反馈检查、URDF / IK 编译、执行停止和控制权管理。编译与运行仍需要匹配实际设备的模型、工具和现场测量。

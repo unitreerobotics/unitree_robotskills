@@ -1,0 +1,40 @@
+{
+ "_doc": "Base frame of R1-D (x fwd, y left, z up, metres). table_z = table top. Sim uses every field; on the real robot only table_z / table_x_min / *_min_above_table are enforced (scene collision floor), the rest are layout hints for the operator and the prompts.",
+ "lift_m": 0.665,
+ "table_z": 0.595,
+ "table_x_min": 0.2,
+ "tcp_min_above_table": 0.015,
+ "link_min_above_table": 0.05,
+ "toaster": {
+  "x": 0.42,
+  "y": -0.13,
+  "l": 0.26,
+  "w": 0.15,
+  "h": 0.15,
+  "slot_yaw_deg": 90.0,
+  "slot_offsets": [
+   0.02,
+   -0.02
+  ],
+  "slice_protrude": 0.045
+ },
+ "slice": {
+  "w": 0.1,
+  "t": 0.015,
+  "h": 0.1
+ },
+ "plate": {
+  "x": 0.4,
+  "y": 0.02,
+  "r": 0.09
+ },
+ "pink_plate": {
+  "x": 0.36,
+  "y": 0.22,
+  "r": 0.09
+ },
+ "_layout_note": "Base frame z: floor = -0.155 (wheel/caster mesh bottoms, URDF). table_z = 0.75 m table - 0.155 = 0.595. Best reach: table ~0.38 below the torso reference, i.e. lift ~= table_z + 0.07 = 0.665. Object x/y are hints; object z in sim = table_z + their heights.",
+ "floor_z": -0.155,
+ "table_height_from_floor": 0.75,
+ "_table_edge_note": "2026-11-16: chassis front (x=0.227) flush with the table edge; table_x_min 0.20 leaves margin for an overhanging top"
+}

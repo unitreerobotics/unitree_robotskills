@@ -2,7 +2,7 @@
 
 English | [中文](architecture.zh.md)
 
-This document describes `g1d_r1d_navigation/common/` and the navigation preview skeleton, as well as the separate painting and Gomoku workflows. Chinese chess on R1-D (`r1d_chess`) is likewise self-contained: its own chess service, bundled robot runtime, setup tools and configuration; see its [README](../unitree_gpt6/r1d_chess/README.md). Chinese chess (Xiangqi) on G1-D uses its own source code, configuration, models and scripts and does not plug into the navigation preview interface; for its model orchestration, full-plan preflight, service execution and checkpoint interfaces, see the [g1d_chess runtime guide](../unitree_gpt6/g1d_chess/docs/runtime.md).
+This document describes `g1d_r1d_navigation/common/` and the navigation preview skeleton, as well as the separate painting and Gomoku workflows. Chinese chess on R1-D (`r1d_chess`) is likewise self-contained: its own chess service, bundled robot runtime, setup tools and configuration; see its [README](../unitree_gpt6/r1d_chess/README.md). The R1-D sandwich skill (`r1d_sandwich`) is another self-contained workflow: the agent emits end-effector waypoints from camera images while a local service owns IK, safety checks, execution and the watchdog; see its [README](../unitree_gpt6/r1d_sandwich/README.md). Chinese chess (Xiangqi) on G1-D uses its own source code, configuration, models and scripts and does not plug into the navigation preview interface; for its model orchestration, full-plan preflight, service execution and checkpoint interfaces, see the [g1d_chess runtime guide](../unitree_gpt6/g1d_chess/docs/runtime.md).
 
 ## Layers
 

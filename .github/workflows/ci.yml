@@ -23,12 +23,12 @@ jobs:
       - run: python -m ruff format --check .
       - name: Check shell syntax
         run: |
-          for script in unitree_gpt6/*/scripts/*.sh; do
+          for script in unitree_gpt6/*/scripts/*.sh unitree_gpt6/r1d_sandwich/r1d; do
             bash -n "$script"
           done
       - name: Offline unit tests without importing the vendored SDK
         run: |
-          for skill in g1d_r1d_navigation/common g1d_gomoku g1d_r1d_navigation; do
+          for skill in g1d_r1d_navigation/common g1d_gomoku g1d_r1d_navigation r1d_sandwich; do
             python -m unittest discover -s "unitree_gpt6/$skill/tests" -p 'test_*.py'
           done
       - name: Preview smoke tests
