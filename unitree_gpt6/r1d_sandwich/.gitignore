@@ -1,0 +1,6 @@
+# Per-run data and local settings of the R1-D sandwich skill
+runs/
+.env
+.venv/
+__pycache__/
+.pytest_cache/

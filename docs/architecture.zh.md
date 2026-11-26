@@ -2,7 +2,7 @@
 
 [English](architecture.md) | 中文
 
-本文描述 `g1d_r1d_navigation/common/` 与导航预览骨架，以及独立的绘画和五子棋工作流。R1-D 中国象棋（`r1d_chess`）同样自成一体：自带象棋服务、内置的机器人运行时、setup 工具和配置，见其 [README](../unitree_gpt6/r1d_chess/README.zh.md)。G1-D 中国象棋独立使用其源码、配置、模型和脚本，不接入导航预览接口；其模型编排、完整计划预检、服务执行与检查点接口见 [g1d_chess 运行说明](../unitree_gpt6/g1d_chess/docs/runtime.zh.md)。
+本文描述 `g1d_r1d_navigation/common/` 与导航预览骨架，以及独立的绘画和五子棋工作流。R1-D 中国象棋（`r1d_chess`）同样自成一体：自带象棋服务、内置的机器人运行时、setup 工具和配置，见其 [README](../unitree_gpt6/r1d_chess/README.zh.md)。R1-D 三明治技能（`r1d_sandwich`）也是独立工作流：Agent 根据相机图像给出末端路点，本机服务负责 IK、安全检查、执行和看门狗，见其 [README](../unitree_gpt6/r1d_sandwich/README.zh.md)。G1-D 中国象棋独立使用其源码、配置、模型和脚本，不接入导航预览接口；其模型编排、完整计划预检、服务执行与检查点接口见 [g1d_chess 运行说明](../unitree_gpt6/g1d_chess/docs/runtime.zh.md)。
 
 ## 分层
 

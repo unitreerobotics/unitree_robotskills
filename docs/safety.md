@@ -12,6 +12,8 @@ Chinese chess (Xiangqi) includes real robot SDK interfaces, inverse kinematics, 
 
 Chinese chess on R1-D (`r1d_chess`) also drives a real robot through its own chess service and bundled robot runtime. Its `config/` ships the calibration results of a reference robot: complete the bring-up in its [setup guide](../unitree_gpt6/r1d_chess/setup/README.md) before any move, and check the capability boundaries in its [SKILL.md](../unitree_gpt6/r1d_chess/SKILL.md) and [operation manual](../unitree_gpt6/r1d_chess/docs/operation_manual.md).
 
+R1-D sandwich (`r1d_sandwich`) drives a real robot through a local EEF service. Start it with a fixed lift of `0.522` m, and require explicit user authorisation for every motion. Use joint-space `home` between stages, carry only after the gripper opening is at least `0.1`, and verify the toaster obstacle box after moving it. The service checks IK, collision, table and registered obstacle constraints, but it does not detect people, food, loose objects or grasp attachment. See its [SKILL.md](../unitree_gpt6/r1d_sandwich/SKILL.md) and [README](../unitree_gpt6/r1d_sandwich/README.md).
+
 All model outputs and plans should be treated as inputs that still need to be verified. Real-robot interface integration must be designed separately; execution must not be started merely by removing the mode check.
 
 Painting provides a G1-D / Dex1 hardware backend, connection and feedback checks, URDF / IK compilation, execution stop and control authority management. Compilation and runs still require models, tools and on-site measurements that match the actual device.

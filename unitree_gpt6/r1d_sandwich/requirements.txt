@@ -1,0 +1,14 @@
+# Python packages imported by the R1-D sandwich skill (Python 3.10). Nothing else has to be checked out.
+numpy==2.2.6
+opencv-python==5.0.0.93
+# Pinocchio (kinematics, gravity terms); brings coal for the collision checks.
+pin==4.0.0
+# IK solver behind every waypoint (src/ik/solvers.py, RoboKitIK). warp-lang runs on the CPU or on CUDA.
+robokit==1.0.0
+warp-lang==1.11.0
+# Camera client.
+pyzmq==27.3.0
+# Robot state and commands. ik_executor imports unitree_sdk2py at import time, so simulation needs it too.
+cyclonedds==0.10.2
+# Same pin as the R1-D chess skill. The reference workstation used a local copy whose commit is not recorded.
+unitree_sdk2py @ git+https://github.com/unitreerobotics/unitree_sdk2_python.git@814556d15970dd2ecf1c9984e845ca02ab07e206

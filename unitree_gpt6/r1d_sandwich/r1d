@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Unified entry point for the R1-D sandwich skill.
+set -euo pipefail
+
+SKILL_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+# shellcheck source=scripts/_env.sh
+source "$SKILL_ROOT/scripts/_env.sh"
+
+usage() {
+  printf '%s\n' \
+    'Usage: bash r1d {serve|eef|eval|posture|metrics|check-env|home} [arguments]' \
+    '' \
+    '  serve      Start the local skill server (sim, shadow, or real)' \
+    '  eef        Agent EEF commands: new, state, look, check, exec, grip, waist, home, keyframe, rec-start, rec-stop' \
+    '  eval       Preview waypoint candidates with the same r1-ik planner (offline)' \
+    '  posture    Report current arm posture metrics (read-only)' \
+    '  metrics    Collect a run metrics JSON file from EEF logs and a transcript' \
+    '  check-env  Check external checkouts, interpreters, imports, URDF, and config files' \
+    '  home       Safely return the robot to the joint-space home pose (motion; requires authorization)'
+}
+
+command=${1:-help}
+if [ "$#" -gt 0 ]; then
+  shift
+fi
+
+case "$command" in
+  serve)
+    exec bash "$SKILL_ROOT/scripts/serve.sh" "$@"
+    ;;
+  eef)
+    exec "$SKILL_PYTHON" -B "$SKILL_ROOT/scripts/eef_cli.py" "$@"
+    ;;
+  eval)
+    exec "$SKILL_PYTHON" -B "$SKILL_ROOT/scripts/eef_eval.py" "$@"
+    ;;
+  posture)
+    exec "$SKILL_PYTHON" -B "$SKILL_ROOT/scripts/arm_posture.py" "$@"
+    ;;
+  metrics)
+    exec "$SKILL_PYTHON" -B "$SKILL_ROOT/scripts/collect_metrics.py" "$@"
+    ;;
+  check-env)
+    exec "$SKILL_PYTHON" -B "$SKILL_ROOT/scripts/check_environment.py" "$@"
+    ;;
+  home)
+    exec "$SKILL_PYTHON" -B -m robot.go_home "$@"
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    usage >&2
+    exit 2
+    ;;
+esac

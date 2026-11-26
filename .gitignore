@@ -44,3 +44,8 @@ recordings/
 /unitree_gpt6/r1d_chess/**/runs/
 /unitree_gpt6/r1d_chess/config/setup_status.json
 /unitree_gpt6/r1d_chess/setup/arm-calibration/r1_d/reports/
+
+# R1-D sandwich: per-run data and local environment
+/unitree_gpt6/r1d_sandwich/runs/
+/unitree_gpt6/r1d_sandwich/.env
+/unitree_gpt6/r1d_sandwich/.venv/

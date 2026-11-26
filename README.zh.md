@@ -54,6 +54,10 @@
       <a href="assets/demo_marker_sort.mp4"><img src="assets/preview_marker_sort.gif" alt="马克笔整理" width="100%"></a>
       <p><b>马克笔整理</b><br>R1-7a</p>
     </td>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_sandwich_r1d.mp4"><img src="assets/preview_sandwich_r1d.gif" alt="R1-D 三明治" width="100%"></a>
+      <p><b>三明治</b><br>R1-D</p>
+    </td>
   </tr>
 </table>
 
@@ -86,6 +90,7 @@ Agent 自主完成闭环：观察 → 推理 → 执行 → 验证。新增任�
 | [g1d_gomoku](unitree_gpt6/g1d_gomoku/README.zh.md) | G1-D | 通过四路相机识别 19×19 棋局，自主选点，右臂抓放棋子并归位；松爪前征得用户确认 | [SKILL.zh.md](unitree_gpt6/g1d_gomoku/SKILL.zh.md)、自主轮次 CLI |
 | [g1d_chess](unitree_gpt6/g1d_chess/README.zh.md) | G1-D | 识别中国象棋棋局，调用 Fairy-Stockfish 规划本轮走法，左右手抓放、处理吃子并复盘结果 | [SKILL.zh.md](unitree_gpt6/g1d_chess/SKILL.zh.md)、服务与单轮脚本 |
 | [r1d_chess](unitree_gpt6/r1d_chess/README.zh.md) | R1-D | 通过头部相机读中国象棋棋局，调用 Fairy-Stockfish 选着，生成抓放位姿并做完整预检，依据头图和腕图判断每个视觉门禁，用左右 Dex1 夹爪抓放、处理吃子并复盘结果；自带新机器人上线工具（相机检查、头部相机标定、机械臂精度标定、场景与棋盘标定） | [SKILL.zh.md](unitree_gpt6/r1d_chess/SKILL.zh.md)、象棋服务、机器人运行时与单轮命令 |
+| [r1d_sandwich](unitree_gpt6/r1d_sandwich/README.zh.md) | R1-D | 读取头部和两路腕部图像，估计物体位置，直接下发末端路点，用左右 Dex1 夹爪和固定升降制作一份三明治；包含 planner 预演、shadow 模式和运行指标采集 | [SKILL.zh.md](unitree_gpt6/r1d_sandwich/SKILL.zh.md)、本机 EEF 服务与直出末端命令行 |
 | [g1d_r1d_navigation](unitree_gpt6/g1d_r1d_navigation/README.zh.md) | R1-D / G1-D | 依据自然语言指令，通过 MCP 工具自主导航：观察画面、移动、移动中持续推理，并可记录与返回地点 | MCP 工具服务；另有确定性预览 CLI |
 | [r17a_marker_sort](unitree_gpt6/r17a_marker_sort/README.zh.md) | R1-7a | 定位笔盒，逐支抓起，按照颜色顺序放入对应的槽位 | [SKILL.md](unitree_gpt6/r17a_marker_sort/SKILL.zh.md) |
 
@@ -106,6 +111,7 @@ unitree_robotskills/
     ├── g1d_gomoku/              # 五子棋：自主轮次与硬件工具
     ├── g1d_chess/               # 中国象棋：服务、脚本与棋盘标注工具
     ├── r1d_chess/               # R1-D 中国象棋：服务、机器人运行时、setup 与标定工具
+    ├── r1d_sandwich/            # R1-D 三明治：直出末端服务、planner 检查与运行工具
     ├── g1d_r1d_navigation/      # 导航：MCP 运行时与预览骨架
     └── r17a_marker_sort/        # 马克笔整理：分步脚本、IK 与相机标定
 ```
