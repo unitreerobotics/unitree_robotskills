@@ -23,30 +23,30 @@
 <table>
   <tr>
     <td align="center" colspan="2" width="33%">
-      <a href="assets/demo_draw.mp4"><img src="assets/preview_draw.gif" alt="G1-D 绘画" width="100%"></a>
-      <p><b>绘画</b><br>G1-D</p>
-    </td>
-    <td align="center" colspan="2" width="33%">
       <a href="assets/demo_draw_r1d.mp4"><img src="assets/preview_draw_r1d.gif" alt="R1-D 绘画" width="100%"></a>
       <p><b>绘画</b><br>R1-D</p>
     </td>
     <td align="center" colspan="2" width="33%">
-      <a href="assets/demo_gomoku.mp4"><img src="assets/preview_gomoku.gif" alt="G1-D 五子棋" width="100%"></a>
-      <p><b>五子棋</b><br>G1-D</p>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2" width="33%">
-      <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="G1-D 中国象棋" width="100%"></a>
-      <p><b>中国象棋</b><br>G1-D</p>
+      <a href="assets/demo_draw.mp4"><img src="assets/preview_draw.gif" alt="G1-D 绘画" width="100%"></a>
+      <p><b>绘画</b><br>G1-D</p>
     </td>
     <td align="center" colspan="2" width="33%">
       <a href="assets/demo_gomuku_r1d.mp4"><img src="assets/preview_gomoku_r1d.gif" alt="R1-D 五子棋" width="100%"></a>
       <p><b>五子棋</b><br>R1-D</p>
     </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_gomoku.mp4"><img src="assets/preview_gomoku.gif" alt="G1-D 五子棋" width="100%"></a>
+      <p><b>五子棋</b><br>G1-D</p>
+    </td>
     <td align="center" colspan="2" width="33%">
       <a href="assets/demo_chess_r1d.mp4"><img src="assets/preview_chess_r1d.gif" alt="R1-D 中国象棋" width="100%"></a>
       <p><b>中国象棋</b><br>R1-D</p>
+    </td>
+    <td align="center" colspan="2" width="33%">
+      <a href="assets/demo_chess.mp4"><img src="assets/preview_chess.gif" alt="G1-D 中国象棋" width="100%"></a>
+      <p><b>中国象棋</b><br>G1-D</p>
     </td>
   </tr>
   <tr>
